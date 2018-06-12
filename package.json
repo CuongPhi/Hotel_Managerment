@@ -4,11 +4,12 @@
   "description": "Read and write (update) large Data file",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server.js"
+    "test": "nodemon data/dataService.js",
+	"start":"nodemon apps/Webserver.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ngdhuy/FIT_HCMUS_2018_CNXML_Lab03.git"
+    "url": "git+https://github.com/CuongPhi/Hotel_Managerment.git"
   },
   "keywords": [
     "cnxml",
@@ -17,10 +18,11 @@
   "author": "ndhuy - Huy NGUYEN",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/ngdhuy/FIT_HCMUS_2018_CNXML_Lab03/issues"
+    "url": "https://github.com/CuongPhi/Hotel_Managerment/issues"
   },
-  "homepage": "https://github.com/ngdhuy/FIT_HCMUS_2018_CNXML_Lab03#readme",
+  "homepage": "https://github.com/CuongPhi/Hotel_Managerment#readme",
   "dependencies": {
+    "nodemon": "^1.17.5",
     "xml-js": "^1.6.2",
     "xml2js": "^0.4.19",
     "xmldom": "^0.1.27"

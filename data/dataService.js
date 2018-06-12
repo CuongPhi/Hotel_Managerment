@@ -107,5 +107,5 @@ app.createServer((req, res) => {
     if(err != null)
         console.log('==> Error: ' + err)
     else
-        console.log('Server is starting at port ' + port)
+        console.log('dataService is starting at port ' + port)
 })
