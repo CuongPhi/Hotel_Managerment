@@ -1,0 +1,7 @@
+<Phong Ma_so="003" Loai_phong="Phòng GĐ" Tang="Tầng 0" Gia_thue = "200000" Tinh_trang = "Đã thuê" >
+    <Danh_sach_thue_phong>
+        <Thue_phong Loai_thue="Theo ngày" Ngay_thue= "2018-3-3" Gio_thue= "6:00" Ngay_tra ="2018-3-6" Gia_tien="700000"/>
+        <Thue_phong Loai_thue = "Theo giờ" Ngay_thue= "2018-5-8" Gio_thue= "18:00" Gio_tra="22:00" Gia_tien="150000"/>
+        <Thue_phong Loai_thue="Theo ngày" Ngay_thue= "2018-1-28" Gio_thue= "8:30" Ngay_tra ="2018-1-29" Gia_tien="220000"/>
+    </Danh_sach_thue_phong>
+</Phong>

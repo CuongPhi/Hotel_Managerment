@@ -1,36 +1,26 @@
 'user strict'
 var fs = require('fs')
 const xml2js = require('xml2js')
+var path = __dirname + '/../dataHotel'
 
-var path = __dirname + '/../Method_03'
+var Danh_sach_phong=[];
 
-var danhSach_Tivi = []
 
-//Get danh sách cửa hàng
-var get_CuaHang = ()=>{
-    var data = fs.readFileSync( path + '/Cua_hang/Cua_hang.xml', 'utf-8')
-    return data
-}
-
-var get_DanhSach_Tivi = ()=>{
-    fs.readdirSync(path + '/Tivi/').forEach(file => {
-        var filePath = path + '/Tivi/' + file
-        var data = fs.readFileSync(filePath, 'utf-8')
-
+var get_Danh_sach_phong=()=>{
+    Danh_sach_phong=[];
+    fs.readdirSync(path + '/Rooms/').forEach(file => {
+        var filePath = path + '/Rooms/' + file
+        var data = fs.readFileSync(filePath, 'utf-8');
         var parser = new xml2js.Parser()
         parser.parseString(data, function (err, result) {
-            danhSach_Tivi.push({'Tivi' : result.Tivi.$})
-        })
-    })
-    console.log(danhSach_Tivi)
-
+            Danh_sach_phong.push({'Room' : result.Phong.$})
+        });
+    });
     var builder = new xml2js.Builder()
-    var xml = builder.buildObject(danhSach_Tivi)
-
+    var xml = builder.buildObject(Danh_sach_phong);
+    console.log(xml)
     return xml
 }
-
 module.exports = {
-    get_CuaHang: get_CuaHang,
-    get_DanhSach_Tivi: get_DanhSach_Tivi
+    get_Danh_sach_phong:get_Danh_sach_phong
 }

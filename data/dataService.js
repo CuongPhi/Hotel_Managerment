@@ -20,7 +20,7 @@ function checkAuth(headers){
 
 app.createServer((req, res) => {
     console.log(`${req.method} ${req.url}`);
-
+    
     switch(req.method) {
         case 'GET':
             var getMethod = require('./services/getMethod.js')
@@ -45,6 +45,14 @@ app.createServer((req, res) => {
                     res.end(data)
                     break
 
+                case '/Danh_sach_phong':
+                    res.writeHeader(200, {'Content-Type': 'text/xml',              
+                     "Access-Control-Allow-Origin": "*",
+                     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE"
+                    });
+                    var data = getMethod.get_Danh_sach_phong()
+                    res.end(data)
+                    break
                 default:
                     res.writeHeader(404, {'Content-Type': 'text/plain'})
                     res.end("Request was not support!!!")

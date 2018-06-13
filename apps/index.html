@@ -26,48 +26,20 @@
     <meta name="twitter:url" content="" />
     <meta name="twitter:card" content="" />
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-
-    <!-- Animate.css -->
-    <link rel="stylesheet" href="css/animate.css">
-    <!-- Icomoon Icon Fonts-->
-    <link rel="stylesheet" href="css/icomoon.css">
-    <!-- Themify Icons-->
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <!-- Bootstrap  -->
-    <link rel="stylesheet" href="css/bootstrap.css">
-
-    <!-- Magnific Popup -->
-    <link rel="stylesheet" href="css/magnific-popup.css">
-
-    <!-- Bootstrap DateTimePicker -->
-    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
-
-    <!-- Owl Carousel  -->
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-
-    <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
-
-    <!-- Theme style  -->
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="Site.css">
-    <!-- Modernizr JS -->
-    <script src="js/modernizr-2.6.2.min.js"></script>
+   
     <!-- FOR IE9 below -->
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-
+        <script>
+                
+        </script>
 </head>
-<body>
+<body onload="onloadPage()">
 
     <div class="gtco-loader"></div>
 
     <div id="page">
-
 
         <!-- <div class="page-inner"> -->
         <nav class="gtco-nav" role="navigation">
@@ -117,7 +89,7 @@
         background-size: cover;
     }
 </style>
-<header id="gtco-header" class="gtco-cover gtco-cover-md g-header" role="banner" style="background-image: url(/Content/Home/images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
+<header id="gtco-header" class="gtco-cover gtco-cover-md g-header" role="banner" style="background-image: url(img/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
     <div class="overlay"></div>
 </header>
 <br /><br /><br /><br />
@@ -125,11 +97,11 @@
     <br /><br /><br /><br />
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Tìm phòng</h3>
+            <h3 class="panel-title">Danh sách phòng</h3>
         </div>
         <div class="panel-body">
 
-
+<!-- 
 <form action="/Home/FindRoom" method="post">        <div class="row">
             <div class="col-md-3">
                 <label for="date_start">Start Date</label>
@@ -149,11 +121,11 @@
                 <a href="/Home/BookRoom" onclick="return checkChonPhong()" class="btn btn-primary btn-block">Hoàn Tất</a>
             </div>
         </div>
-</form>            <br />
+</form>            <br /> -->
             <div class="table-responsive">
-                <table class="table table-striped table-bordered text-center align-middle">
+                <table id="table_Phongs" class="table table-striped table-bordered text-center align-middle">
                     <tr>
-                        <th width="100px"></th>
+                        <th width="200px"> Ảnh</th>
                         <th>
                             Số phòng
                         </th>
@@ -166,10 +138,9 @@
                         <th>
                             Giá
                         </th>
-                        <th width="100px"></th>
+                        <th width="200px"> Tình trạng</th>
                     </tr>
-
-                <tr>
+                <!-- <tr>
                     <td>
                         <div class="thumb" onclick="clickImg(1)" style="background-image:url(/Content/Images/Phong/11.jpg);" />
 
@@ -191,7 +162,7 @@
                         <button id="btn_1" class="btn btn-success" onclick="btnClick(1)">Chọn phòng</button>
                         
                     </td>
-                </tr>
+                </tr> -->
                
 
                 </table>
@@ -204,6 +175,7 @@
 
 </div>
 <script>
+  
     function clickImg(id) {
         $.ajax({
             url: "/Home/Slider/"+id,
@@ -264,7 +236,36 @@
     <div class="gototop js-top">
         <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
     </div>
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Icomoon Icon Fonts-->
+    <link rel="stylesheet" href="css/icomoon.css">
+    <!-- Themify Icons-->
+    <link rel="stylesheet" href="css/themify-icons.css">
+    <!-- Bootstrap  -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+
+    <!-- Magnific Popup -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Bootstrap DateTimePicker -->
+    <link rel="stylesheet" href="css/bootstrap-datetimepicker.min.css">
+
+    <!-- Owl Carousel  -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <link href="css/dataTables.bootstrap4.css" rel="stylesheet">
+
+    <!-- Theme style  -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="Site.css">
+    <!-- Modernizr JS -->
+    <script src="js/modernizr-2.6.2.min.js"></script>
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
     <!-- jQuery Easing -->
@@ -291,6 +292,7 @@
 
     <!-- Main -->
     <script src="js/main.js"></script>
+    <script src="js/script.js"></script>
 
 </body>
 </html>

@@ -40,7 +40,7 @@ app
       } else {
         // Set Header cho res (phần header_type đã được xử lý tính toán ở dòng code thứ 16 và 17)
         res.setHeader("Content-type", header_type);
-
+        
         res.end(data);
         console.log(req.url, header_type);
       }
@@ -50,4 +50,5 @@ app
     if (err != null) console.log("==> Error: " + err);
     else console.log("webServer is starting at port: " + port);
   });
+
   
