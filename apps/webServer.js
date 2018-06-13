@@ -8,7 +8,6 @@ app
   .createServer((req, res) => {
     console.log(`${req.method} ${req.url}`);
     var req_url = (req.url == '/') ? '/index.html' : req.url
-
     // Lưu ý: sau khi res nội dung của index.html về client thì ở file HTML sẽ có những
     //       request yêu cầu load nội dung của Resource (cụ thể ở đây là file js/script.js và img/favicon.ico)
     //       nên function này sẽ được gọi lại (callback) nhiều lần (cụ thể coi log ở dòng code thứ 6)
@@ -28,7 +27,6 @@ app
             ".css": "text/css",
             ".js": "text/javascript"
           }[req.url.substr(file_extension)];
-
     // Đọc file theo req gửi từ Client lên (lưu ý, phần này sẽ được call nhiều lần để đọc các file Resource)
     fs.readFile(__dirname + req_url, (err, data) => {
       if (err) {
@@ -50,5 +48,6 @@ app
   })
   .listen(port, err => {
     if (err != null) console.log("==> Error: " + err);
-    else console.log("webServer is starting at port " + port);
+    else console.log("webServer is starting at port: " + port);
   });
+  
