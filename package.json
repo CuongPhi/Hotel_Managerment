@@ -2,10 +2,11 @@
   "name": "lab03",
   "version": "1.0.0",
   "description": "Read and write (update) large Data file",
-  "main": "server.js",
   "scripts": {
-    "test": "nodemon data/dataService.js",
-	"start":"nodemon apps/Webserver.js"
+    "dataService": "nodemon data/dataService.js",
+    "Webserver": "nodemon apps/Webserver.js",
+    "busService": "nodemon bus/busService.js",
+    "start": "npm-run-all --parallel Webserver dataService"
   },
   "repository": {
     "type": "git",
@@ -23,8 +24,12 @@
   "homepage": "https://github.com/CuongPhi/Hotel_Managerment#readme",
   "dependencies": {
     "nodemon": "^1.17.5",
+    "querystring": "^0.2.0",
     "xml-js": "^1.6.2",
     "xml2js": "^0.4.19",
     "xmldom": "^0.1.27"
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.1.3"
   }
 }

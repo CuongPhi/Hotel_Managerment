@@ -1,31 +1,46 @@
-var Phongs = [];
+var Phongs = new Array();
+
 loadDataPhongs = function() {
-  var http = new XMLHttpRequest();
-  http.open("GET", "http://localhost:3000/Danh_sach_phong", false);
-  http.send("");
-  var dataRes = http.responseText;
-  var data = new DOMParser().parseFromString(dataRes, "text/xml")
-    .documentElement;
-  console.log(data.getElementsByTagName("Room"));
-  return data.getElementsByTagName("Room");
+  $.ajax({
+    async: false,
+    dataType: "xml",
+		type: "GET",
+		url: 'http://localhost:3000/Danh_sach_phong',
+		success: function (xml) {  
+         $(xml).find('Room').each(function(){
+            var phong= {
+              Ma_so : $(this).find('Ma_so').text(),
+              Loai_phong: $(this).find('Loai_phong').text(),
+              Tang: $(this).find('Tang').text(),
+              Gia_thue: $(this).find('Gia_thue').text(),
+              Tinh_trang: $(this).find('Tinh_trang').text()
+           }
+          Phongs.push(phong);
+        })
+        }
+        
+	});
+
 };
-tao_danh_sach_phong = ds => {
- Phongs= new Array();
-  for (let i = 0; i < ds.length; i++) {
-    var phong = {
-      Ma_so: ds[i].getElementsByTagName("Ma_so")[0].innerHTML,
-      Loai_phong: ds[i].getElementsByTagName("Loai_phong")[0].innerHTML,
-      Tang: ds[i].getElementsByTagName("Tang")[0].innerHTML,
-      Gia_thue: ds[i].getElementsByTagName("Gia_thue")[0].innerHTML,
-      Tinh_trang: ds[i].getElementsByTagName("Tinh_trang")[0].innerHTML
-    };
-    Phongs.push(phong);
-  }
-};
+// tao_danh_sach_phong = ds => {
+//  Phongs= new Array();
+//   for (let i = 0; i < ds.length; i++) {
+//     var phong = {
+//       Ma_so: ds[i].getElementsByTagName("Ma_so")[0].innerHTML,
+//       Loai_phong: ds[i].getElementsByTagName("Loai_phong")[0].innerHTML,
+//       Tang: ds[i].getElementsByTagName("Tang")[0].innerHTML,
+//       Gia_thue: ds[i].getElementsByTagName("Gia_thue")[0].innerHTML,
+//       Tinh_trang: ds[i].getElementsByTagName("Tinh_trang")[0].innerHTML
+//     };
+//     Phongs.push(phong);
+//   }
+// };
 
 onloadPage = () => {
-  tao_danh_sach_phong(loadDataPhongs());
-  load_Phongs();
+  loadDataPhongs()
+  console.log(Phongs.length)
+
+  load_Phongs();  
 };
 
 load_Phongs = () => {

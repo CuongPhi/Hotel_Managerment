@@ -6,17 +6,7 @@ var query = require('querystring')
 
 var port = 3000
 
-var session = []
 
-function checkAuth(headers){
-    var uid = headers.uid
-    for(var i = 0; i < session.length; i++){
-        if(uid == session[i]){
-            return true
-        }
-    }
-    return false
-}
 
 app.createServer((req, res) => {
     console.log(`${req.method} ${req.url}`);

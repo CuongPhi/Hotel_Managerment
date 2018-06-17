@@ -1,0 +1,13 @@
+{
+    "0":{
+        "userName" : "admin",
+        "passWord" : "admin123",
+        "type" : "Manager"
+    },
+
+    "1":{
+        "userName" : "ngoc",
+        "passWord" : "ngoc123",
+        "type" : "Staff"
+    }
+}
