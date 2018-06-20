@@ -61,7 +61,7 @@
     <![endif]-->
 
 </head>
-<body>
+<body onload="onloadPage()">
 
     <div class="gtco-loader"></div>
 
@@ -136,7 +136,7 @@
                         <table class="table table-bordered table-striped table-hover" id="dataTable" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th width="100px"></th>
+                                    <th width="100px">Ảnh</th>
                                     <th>
                                         Loại phòng
                                     </th>
@@ -146,19 +146,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-
-                                    <tr>
-                                        <td>
-                                         <div class="thumb" onclick="clickImg(1)" style="background-image:url(/img/Phong/11.jpg);" />
-
-                                        </td>
-                                        <td>
-                                            Ph&#242;ng đơn
-                                        </td>
-                                        <td>
-                                            100000
-                                        </td>
-                                    </tr>                                   
+                                                        
                             </tbody>
                         </table>
                     </div>
@@ -238,6 +226,7 @@
 
     <!-- Main -->
     <script src="js/main.js"></script>
+    <script src="js/typeroom.js"></script>
 
 </body>
 </html>

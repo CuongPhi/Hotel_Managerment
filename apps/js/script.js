@@ -1,6 +1,7 @@
 var Phongs = new Array();
 
 loadDataPhongs = function() {
+  Phongs = [];
   $.ajax({
     async: false,
     dataType: "xml",
@@ -13,7 +14,8 @@ loadDataPhongs = function() {
               Loai_phong: $(this).find('Loai_phong').text(),
               Tang: $(this).find('Tang').text(),
               Gia_thue: $(this).find('Gia_thue').text(),
-              Tinh_trang: $(this).find('Tinh_trang').text()
+              Tinh_trang: $(this).find('Tinh_trang').text(),
+              Src: $(this).find('src').text()
            }
           Phongs.push(phong);
         })
@@ -37,9 +39,7 @@ loadDataPhongs = function() {
 // };
 
 onloadPage = () => {
-  loadDataPhongs()
-  console.log(Phongs.length)
-
+  loadDataPhongs();
   load_Phongs();  
 };
 
@@ -50,10 +50,10 @@ load_Phongs = () => {
 
     var imgTag = document.createElement("td");
     var divimg = document.createElement('div');
-    divimg.style = 'background-image:url(/Content/Images/Phong/11.jpg';
+    divimg.style = `background-image:url(${e.Src})`;
     divimg.className= 'thumb';
     divimg.onclick = '';
-      imgTag.appendChild(divimg);  
+    imgTag.appendChild(divimg);  
 
     var idTag = document.createElement("td");
     idTag.innerHTML = e.Ma_so;
@@ -63,9 +63,10 @@ load_Phongs = () => {
 
     var floorTag = document.createElement("td");
     floorTag.innerHTML = e.Tang;
+ 
 
-    var priceTag = document.createElement("td");
-    priceTag.innerHTML = e.Gia_thue;
+    var priceTag = document.createElement("td");   
+    priceTag.innerHTML =(parseInt(e.Gia_thue)).toLocaleString('vi', {style : 'currency', currency : 'VND'});
 
     var sttTag = document.createElement("td");
     var sttBtn = document.createElement('button');

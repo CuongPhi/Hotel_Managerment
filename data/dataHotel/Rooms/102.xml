@@ -1,4 +1,4 @@
-<Phong Ma_so="102" Loai_phong="Phòng đôi" Tang="Tầng 1" Gia_thue = "150000" Tinh_trang = "Trống" >
+<Phong Ma_so="102" src='http://localhost:3002/img/rooms/102.jpg'  Loai_phong="Phòng đôi" Tang="Tầng 1" Gia_thue = "150000" Tinh_trang = "Trống" >
     <Danh_sach_thue_phong>
         <Thue_phong Loai_thue="Theo ngày" Ngay_thue= "2018-6-17" Gio_thue= "13:00" Ngay_tra ="2018-6-18" Gia_tien="180000"/>
         <Thue_phong Loai_thue = "Theo giờ" Ngay_thue= "2018-5-21" Gio_thue= "20:00" Gio_tra="21:30" Gia_tien="80000"/>
