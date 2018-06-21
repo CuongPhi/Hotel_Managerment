@@ -104,8 +104,103 @@
 	    	}
 		});
 	};
+	var isDetail=true;
+	var addEventClickAllImg=function(event){
+		  $('body').on('click', '.thumb', function(){
+			try{
+				var id = $(this).context.id;
+			}
+			catch{}
+			if(!isDetail)
+			{Phongs.forEach(e=>{
+				// 	if(e.Ma_so === id){
+				// 		$.ajax({
+				// 			url: `${e.Src}`,
+				// 			type: "GET",
+				// 			success: function (data) {
+				// 				$("#slider").html(data);
+				// 			}
+				// 		});
+					
+				// 	}
+				// })
+				// 
+				return;
+			}	
+			isDetail=false;		
+			var container = document.getElementById('par_container');		
+			var node_list = container.childNodes;
+    		for(var i = node_list.length - 1; i >= 0; i--){
+				container.removeChild(node_list[i]);
+				}
+			console.log('func bot')
+	
+			var flag = false;
+			//----add new page
+			var divImg =  document.createElement('div');
+			divImg.className = 'main_container';
+			Phongs.forEach(e=>{
+				if(e.Ma_so === id){
+					var img =document.createElement('div');
+					img.style = `margin-left:50px;width:500px; display:inline-block; height:375px; background-image:url(${e.Src})`;
+					img.className ='thumb';
+					img.id = e.Ma_so;
+					divImg.appendChild(img);	
+					
+					
 
+					var divDetail = document.createElement('div');
+					divDetail.style =`margin-right:50px;float:right; display:inline-block; width:500px; height:375px; border:solid 1px`;
+										
+					// var divlb = document.createElement('lable')
+					// divlb.innerHTML = "Mã số: ";
+					// var divId = document.createElement('lable')
+					// divId.innerHTML = e.Ma_so;
+					
+					// var divGia = document.createElement('lable')
+					// divGia.innerHTML = "Giá thuê: ";					
+					// var divPrice = document.createElement('lable')
+					// divPrice.innerHTML = e.Gia_thue;
+					
+					// var br = document.createElement('br');
+					// divDetail.appendChild(divlb);
+					// divDetail.appendChild(divId);
+					
+					// divDetail.appendChild(br);
+						
+					// divDetail.appendChild(divGia);
+					// divDetail.appendChild(divPrice);
+					
+					divDetail.innerHTML = `
+						<lable style='text-align:center; display:block ; font-size:30px!important; color: red'>${e.Loai_phong}</lable>
+						<br/>
+						<lable style='margin-left:50px ;font-weight:bold; font-size:20px'> Mã số phòng: </lable>
+						<lable> ${e.Ma_so} </lable>
+						<br/>
+						<lable style='margin-left:50px ;font-weight:bold; font-size:20px'> Tầng: </lable>
+						<lable> ${e.Tang} </lable>
+						<br/>
+					
+						<lable style='margin-left:50px ;font-weight:bold; font-size:20px'> Giá thuê: </lable>
+						<lable> ${e.Gia_thue} </lable>
+						<br/>
+						<lable style='margin-left:50px ;font-weight:bold; font-size:20px'> Tình trạng: </lable>
 
+						<button id='btnTinhTrang' class='btn btn-success'> ${e.Tinh_trang} </button>
+						
+					`
+					divImg.appendChild(divDetail)
+					
+					if(e.Tinh_trang == 'Đã thuê')
+						flag=true
+				}
+			})
+
+			container.appendChild(divImg);
+			if(flag)
+				document.getElementById('btnTinhTrang').className = 'btn btn-danger';
+		  })
+	  }
 	var burgerMenu = function() {
 
 		$('body').on('click', '.js-gtco-nav-toggle', function(event){
@@ -329,7 +424,7 @@
 
 	
 	$(function(){
-		mobileMenuOutsideClick();
+		//mobileMenuOutsideClick();
 		formTab();
 		offcanvasMenu();
 		burgerMenu();
@@ -341,6 +436,7 @@
 		counterWayPoint();
 		dateTimeForm();
 		parallax();
+		addEventClickAllImg();
 	});
 
 

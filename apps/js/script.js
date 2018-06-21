@@ -19,8 +19,7 @@ loadDataPhongs = function() {
            }
           Phongs.push(phong);
         })
-        }
-        
+        } 
 	});
 
 };
@@ -38,11 +37,10 @@ loadDataPhongs = function() {
 //   }
 // };
 
-onloadPage = () => {
+onloadPage = () => {  
   loadDataPhongs();
-  load_Phongs();  
-};
-
+  load_Phongs();
+}
 load_Phongs = () => {
 //Xoa_Tat_ca_childNodes_Element(table_Phongs);
     Phongs.forEach(e => {
@@ -52,8 +50,10 @@ load_Phongs = () => {
     var divimg = document.createElement('div');
     divimg.style = `background-image:url(${e.Src})`;
     divimg.className= 'thumb';
-    divimg.onclick = '';
+    divimg.id =e.Ma_so;
+    //divimg.addEventListener('click', loadPageDetail(maso),false)
     imgTag.appendChild(divimg);  
+    //imgTag.onclick=  `loadPageDetail(${e.Ma_so})`;
 
     var idTag = document.createElement("td");
     idTag.innerHTML = e.Ma_so;
@@ -61,12 +61,11 @@ load_Phongs = () => {
     var typeTag = document.createElement("td");
     typeTag.innerHTML = e.Loai_phong;
 
-    var floorTag = document.createElement("td");
-    floorTag.innerHTML = e.Tang;
+    // var floorTag = document.createElement("td");
+    // floorTag.innerHTML = e.Tang;
  
-
-    var priceTag = document.createElement("td");   
-    priceTag.innerHTML =(parseInt(e.Gia_thue)).toLocaleString('vi', {style : 'currency', currency : 'VND'});
+    // var priceTag = document.createElement("td");   
+    // priceTag.innerHTML =(parseInt(e.Gia_thue)).toLocaleString('vi', {style : 'currency', currency : 'VND'});
 
     var sttTag = document.createElement("td");
     var sttBtn = document.createElement('button');
@@ -80,17 +79,20 @@ load_Phongs = () => {
     DS_Row.appendChild(imgTag);
     DS_Row.appendChild(idTag);
     DS_Row.appendChild(typeTag);
-    DS_Row.appendChild(floorTag);
-    DS_Row.appendChild(priceTag);
+    //DS_Row.appendChild(floorTag);
+   // DS_Row.appendChild(priceTag);
     DS_Row.appendChild(sttTag);
-    document.getElementsByTagName('tbody')[0].appendChild(DS_Row)
+    document.getElementsByTagName('tbody')[0].appendChild(DS_Row);
+
+
    // table_Phongs.appendChild(DS_Row);
   });
+  return true;
 };
-
 function Xoa_Tat_ca_childNodes_Element(node_element){
     var node_list = node_element.childNodes
     for(var i = node_list.length - 1; i >= 0; i--){
         node_element.removeChild(node_list[i]);
     }
 }
+
