@@ -1,0 +1,4 @@
+<Phieu_thue Ma_phieu='002' Ma_phong='003' Ngay_bat_dau='2018-12-3' Trang_thai ='false'>
+        <Khach_hang  Ten_khach_hang='Nguyễn Thị Hoa' Loai_khach= 'Nội địa' CMND ='289464552' Dia_chi = 'Quận 7' />
+        <Khach_hang  Ten_khach_hang='Phạm Thái Tuấn' Loai_khach= 'Nội địa' CMND ='281166522' Dia_chi = '97/23 Tạ Uyên' />
+</Phieu_thue>

@@ -6,7 +6,7 @@
     "dataService": "nodemon data/dataService.js",
     "Webserver": "nodemon apps/Webserver.js",
     "busService": "nodemon bus/busService.js",
-    "start": "npm-run-all --parallel Webserver dataService"
+    "start": "npm-run-all --parallel Webserver dataService busService"
   },
   "repository": {
     "type": "git",

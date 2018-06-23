@@ -112,7 +112,8 @@
 			}
 			catch{}
 			if(!isDetail)
-			{Phongs.forEach(e=>{
+			{
+				//Phongs.forEach(e=>{
 				// 	if(e.Ma_so === id){
 				// 		$.ajax({
 				// 			url: `${e.Src}`,
@@ -182,7 +183,7 @@
 						<br/>
 					
 						<lable style='margin-left:50px ;font-weight:bold; font-size:20px'> Giá thuê: </lable>
-						<lable> ${e.Gia_thue} </lable>
+						<lable> ${e.Gia_thue} đ </lable>
 						<br/>
 						<lable style='margin-left:50px ;font-weight:bold; font-size:20px'> Tình trạng: </lable>
 

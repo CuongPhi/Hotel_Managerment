@@ -13,7 +13,10 @@ var get_Danh_sach_phong=()=>{
         var data = fs.readFileSync(filePath, 'utf-8');
         var parser = new xml2js.Parser()
         parser.parseString(data, function (err, result) {
-            Danh_sach_phong.push({'Room' : result.Phong.$})
+            console.log(result)
+         //  if(result.Phong.Tam_ngung === 'false'){
+                Danh_sach_phong.push({'Room' : result.Phong.$});
+          // }
         });
     });
     var builder = new xml2js.Builder()

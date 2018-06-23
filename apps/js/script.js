@@ -9,6 +9,7 @@ loadDataPhongs = function() {
 		url: 'http://localhost:3000/Danh_sach_phong',
 		success: function (xml) {  
          $(xml).find('Room').each(function(){
+           if($(this).find('Tam_ngung').text() === 'false'){
             var phong= {
               Ma_so : $(this).find('Ma_so').text(),
               Loai_phong: $(this).find('Loai_phong').text(),
@@ -16,8 +17,11 @@ loadDataPhongs = function() {
               Gia_thue: $(this).find('Gia_thue').text(),
               Tinh_trang: $(this).find('Tinh_trang').text(),
               Src: $(this).find('src').text()
-           }
-          Phongs.push(phong);
+              }
+             Phongs.push(phong);
+  
+          }
+            
         })
         } 
 	});

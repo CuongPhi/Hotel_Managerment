@@ -1,2 +1,1 @@
-
-<Loai_phong Ma_loai= "LP01" src='http://localhost:3002/img/typeroom/single.jpg' Ten='Phòng đơn' Gia_thue = '100000'/>
+<Loai_phong Ghi_chu="Không" Ma_loai= "LP01" src='http://localhost:3002/img/typeroom/single.jpg' Ten='Phòng đơn' Gia_thue = '150000'/>

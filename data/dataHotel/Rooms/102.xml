@@ -1,7 +1,7 @@
-<Phong Ma_so="102" src='http://localhost:3002/img/rooms/102.jpg'  Loai_phong="Phòng đôi" Tang="Tầng 1" Gia_thue = "150000" Tinh_trang = "Trống" >
+<Phong Ma_so="102" Tam_ngung='false'  src='http://localhost:3002/img/rooms/102.jpg'  Loai_phong="Phòng đôi" Tang="Tầng 1" Gia_thue = "200000" Tinh_trang = "Trống" >
     <Danh_sach_thue_phong>
-        <Thue_phong Loai_thue="Theo ngày" Ngay_thue= "2018-6-17" Gio_thue= "13:00" Ngay_tra ="2018-6-18" Gia_tien="180000"/>
-        <Thue_phong Loai_thue = "Theo giờ" Ngay_thue= "2018-5-21" Gio_thue= "20:00" Gio_tra="21:30" Gia_tien="80000"/>
-        <Thue_phong Loai_thue="Theo ngày" Ngay_thue= "2018-6-25" Gio_thue= "8:20" Ngay_tra ="2018-6-28" Gia_tien="350000"/>
+        <Thue_phong So_ngay_thue = '2' Gia_thue='200000' Thanh_tien ="220000"/>
+        <Thue_phong So_ngay_thue = '1' Gia_thue='200000' Thanh_tien ="240000"/>
+        <Thue_phong So_ngay_thue = '3' Gia_thue='200000' Thanh_tien ="210000"/>
     </Danh_sach_thue_phong>
 </Phong>
