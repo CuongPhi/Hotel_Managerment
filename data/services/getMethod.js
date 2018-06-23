@@ -5,7 +5,25 @@ var path = __dirname + '/../dataHotel'
 
 var Danh_sach_phong=[];
 
-
+var get_Danh_sach_ten_phong_trong=()=>{
+    Danh_sach_phong=[];
+    fs.readdirSync(path + '/Rooms/').forEach(file => {
+        var filePath = path + '/Rooms/' + file
+        var data = fs.readFileSync(filePath, 'utf-8');
+        var parser = new xml2js.Parser()
+        parser.parseString(data, function (err, result) {
+           // console.log(result.Phong.$.Tam_ngung)
+           if(result.Phong.$.Tam_ngung === 'false' && result.Phong.$.Tinh_trang === 'Trống'){
+               console.log('-------------------->aaaa')
+                Danh_sach_phong.push({'Room' : result.Phong.$.Ma_so});
+           }
+        });
+    });
+    var builder = new xml2js.Builder()
+    var xml = builder.buildObject(Danh_sach_phong);
+    //console.log(xml)
+    return xml
+}
 var get_Danh_sach_phong=()=>{
     Danh_sach_phong=[];
     fs.readdirSync(path + '/Rooms/').forEach(file => {
@@ -13,15 +31,15 @@ var get_Danh_sach_phong=()=>{
         var data = fs.readFileSync(filePath, 'utf-8');
         var parser = new xml2js.Parser()
         parser.parseString(data, function (err, result) {
-            console.log(result)
-         //  if(result.Phong.Tam_ngung === 'false'){
+            console.log(result.Phong.$.Tam_ngung)
+           if(result.Phong.$.Tam_ngung === 'false'){
                 Danh_sach_phong.push({'Room' : result.Phong.$});
-          // }
+           }
         });
     });
     var builder = new xml2js.Builder()
     var xml = builder.buildObject(Danh_sach_phong);
-    console.log(xml)
+   // console.log(xml)
     return xml
 }
 var get_Danh_sach_loai_phong=()=>{
@@ -36,7 +54,7 @@ var get_Danh_sach_loai_phong=()=>{
     });
     var builder = new xml2js.Builder()
     var xml = builder.buildObject(Danh_sach_phong);
-    console.log(xml)
+   // console.log(xml)
     return xml
 }
 var get_Danh_sach_thuc_an=()=>{
@@ -51,12 +69,13 @@ var get_Danh_sach_thuc_an=()=>{
     });
     var builder = new xml2js.Builder()
     var xml = builder.buildObject(DS_thuc_an);
-    console.log(xml)
+   // console.log(xml)
     return xml;
 }
 
 module.exports = {
     get_Danh_sach_loai_phong:get_Danh_sach_loai_phong,
     get_Danh_sach_phong:get_Danh_sach_phong,
-    get_Danh_sach_thuc_an:get_Danh_sach_thuc_an
+    get_Danh_sach_thuc_an:get_Danh_sach_thuc_an,
+    get_Danh_sach_ten_phong_trong:get_Danh_sach_ten_phong_trong
 }

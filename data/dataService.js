@@ -43,6 +43,7 @@ app.createServer((req, res) => {
                     var data = getMethod.get_Danh_sach_phong()
                     res.end(data)
                     break
+
                 case '/Danh_sach_loai_phong':
                     res.writeHeader(200, {'Content-Type': 'text/xml',              
                      "Access-Control-Allow-Origin": "*",
@@ -51,6 +52,7 @@ app.createServer((req, res) => {
                     var data = getMethod.get_Danh_sach_loai_phong()
                     res.end(data)
                     break
+
                     case '/Danh_sach_thuc_an':
                     res.writeHeader(200, {'Content-Type': 'text/xml',              
                      "Access-Control-Allow-Origin": "*",
@@ -59,6 +61,15 @@ app.createServer((req, res) => {
                     var data = getMethod.get_Danh_sach_thuc_an()
                     res.end(data)
                     break
+                    case '/get_Danh_sach_ten_phong_trong':
+                    res.writeHeader(200, {'Content-Type': 'text/xml',              
+                     "Access-Control-Allow-Origin": "*",
+                     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE"
+                    });
+                    var data = getMethod.get_Danh_sach_ten_phong_trong()
+                    res.end(data)
+                    break
+
                 default:
                     res.writeHeader(404, {'Content-Type': 'text/plain'})
                     res.end("Request was not support!!!")
