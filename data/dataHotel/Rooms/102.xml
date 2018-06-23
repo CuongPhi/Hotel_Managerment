@@ -1,4 +1,4 @@
-<Phong Ma_so="102" Tam_ngung='false'  src='http://localhost:3002/img/rooms/102.jpg'  Loai_phong="Phòng đôi" Tang="Tầng 1" Gia_thue = "200000" Tinh_trang = "Trống" >
+<Phong Ma_so="102" Tam_ngung='false'  src='http://localhost:3002/img/rooms/102.jpg'  Loai_phong="Phòng đôi" Tang="Tầng 1" Gia_thue = "200000" Tinh_trang = "Đã thuê" >
     <Danh_sach_thue_phong>
         <Thue_phong So_ngay_thue = '2' Gia_thue='200000' Thanh_tien ="220000"/>
         <Thue_phong So_ngay_thue = '1' Gia_thue='200000' Thanh_tien ="240000"/>

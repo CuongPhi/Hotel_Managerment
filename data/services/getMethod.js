@@ -14,14 +14,19 @@ var get_Danh_sach_ten_phong_trong=()=>{
         parser.parseString(data, function (err, result) {
            // console.log(result.Phong.$.Tam_ngung)
            if(result.Phong.$.Tam_ngung === 'false' && result.Phong.$.Tinh_trang === 'Trống'){
-               console.log('-------------------->aaaa')
-                Danh_sach_phong.push({'Room' : result.Phong.$.Ma_so});
+               console.log(result)
+                Danh_sach_phong.push({'Room' : {
+                    Loai_phong:result.Phong.$.Loai_phong,
+                    Ma_so: result.Phong.$.Ma_so, 
+                    Gia_thue:result.Phong.$.Gia_thue
+                } 
+            });
            }
         });
     });
     var builder = new xml2js.Builder()
     var xml = builder.buildObject(Danh_sach_phong);
-    //console.log(xml)
+    console.log(xml)
     return xml
 }
 var get_Danh_sach_phong=()=>{
@@ -31,7 +36,6 @@ var get_Danh_sach_phong=()=>{
         var data = fs.readFileSync(filePath, 'utf-8');
         var parser = new xml2js.Parser()
         parser.parseString(data, function (err, result) {
-            console.log(result.Phong.$.Tam_ngung)
            if(result.Phong.$.Tam_ngung === 'false'){
                 Danh_sach_phong.push({'Room' : result.Phong.$});
            }

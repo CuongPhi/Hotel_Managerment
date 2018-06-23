@@ -9,14 +9,15 @@ var  Phongs=[];
 		success: function (xml) {
          $(xml).find('Room').each(function(){
             var phong= {
-        
-              Ma_so : $(this).find('Ma_so').text(),
-
-              }
+                Ma_so : $(this).find('Ma_so').text(),
+                Gia_thue : $(this).find('Gia_thue').text(),
+                Loai_phong : $(this).find('Loai_phong').text()
+            }
              Phongs.push(phong); 
             })
         } 
-	});
+    });
+    console.log(Phongs)
     return Phongs;
 };
 
@@ -24,8 +25,10 @@ loadCbbRooms=()=>{
     var cbb =document.getElementById('cbbRooms');
     var phongs= danh_sach_ten_phong_trong();
     phongs.forEach(e=>{
-        var tmp=document.createElement('option');
-        tmp.innerText = e.Ma_so;
-        cbb.appendChild(tmp);
+        let tmp=document.createElement('option');
+        tmp.text = e.Loai_phong + ' ' +e.Ma_so + ' - '+ (parseInt(e.Gia_thue)).toLocaleString('vi', {style : 'currency', currency : 'VND'});
+        tmp.value =e.Loai_phong ;
+        
+        cbb.add(tmp);
     });
 }
