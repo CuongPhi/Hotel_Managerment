@@ -27,7 +27,7 @@ loadCbbRooms=()=>{
     phongs.forEach(e=>{
         let tmp=document.createElement('option');
         tmp.text = e.Loai_phong + ' ' +e.Ma_so + ' - '+ (parseInt(e.Gia_thue)).toLocaleString('vi', {style : 'currency', currency : 'VND'});
-        tmp.value =e.Loai_phong ;
+        tmp.value =e.Ma_so ;
         
         cbb.add(tmp);
     });
@@ -38,10 +38,12 @@ choThuePhong=()=>{
     var nameCus = $('#name_CUS').val()+"";
     var CMNDCus = $('#CMND_CUS').val()+"";
     var addCus = $('#add_CUS').val()+"";
-
     var numofCus = $('select[name=sl1]').val()+"";
     var numofCusFor = $('select[name=sl2]').val()+"";
-
+    var idRoom = $('select[name=cbbRooms]').val() + "";
+    var dateIn = $('#dateIn').val()+"";
+    console.log(dateIn);
+    return;
     if(CMNDCus ==""){
         $('i').show();
         console.log('CMND lỗi');
@@ -53,8 +55,8 @@ choThuePhong=()=>{
         'cmnd' : `${CMNDCus}`,
         'address' : `${addCus}`,
         'num1' : `${numofCus}`,
-        'num2' : `${numofCusFor}`
-
+        'num2' : `${numofCusFor}`,
+        'idroom' : `${idRoom}`
     });
     $.ajax({
         assign:false,

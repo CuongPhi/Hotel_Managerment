@@ -31,14 +31,11 @@ function checkInRoom(obj, res){
             data += chunk;
         });
 
-        responseServer.on('end', function(){
-            console.log('data receive', data);
-            var objData = JSON.parse(data);
-            res.writeHead(200, contentType);
-            console.log('----> Cho thue phong ok!')
-            res.end("OK"); 
-           // session_storage_process.setField(fieldSessionID, objData.sessionID);
-        });
+        responseServer.on('end', function(){            
+                res.writeHead(200, contentType);
+                res.end(); 
+                console.log('----> Cho thue phong ok!')
+            });
     });
 
     post_req.write(obj);

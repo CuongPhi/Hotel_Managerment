@@ -83,8 +83,9 @@ app.createServer((req, res) => {
                       
                      var objCheckIn = JSON.parse(body);
                      console.log(objCheckIn);
-                     res.writeHeader(200, content_type)
-                     res.end("---> checkIn ok");
+
+                     getMethod.checkIn(objCheckIn,res);
+                                        
 
                     })
                     break

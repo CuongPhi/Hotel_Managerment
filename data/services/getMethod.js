@@ -2,7 +2,11 @@
 var fs = require('fs')
 const xml2js = require('xml2js')
 var path = __dirname + '/../dataHotel'
-
+var contentType = {
+    "Content-Type": "text/plain",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS"
+  };
 var Danh_sach_phong=[];
 
 var get_Danh_sach_ten_phong_trong=()=>{
@@ -76,8 +80,42 @@ var get_Danh_sach_thuc_an=()=>{
    // console.log(xml)
     return xml;
 }
+checkIn= (obj, res)=>{
+    var filePath = path + '/Rooms/' + obj.idroom +".xml";
+    var dataFile= fs.readFileSync(filePath, 'utf-8');
+    var parser =  new xml2js.Parser();
+    parser.parseString(dataFile, (err,result)=>{
+
+
+        var phieu_thue={
+            '$':{
+                Ten_KH : obj.name,
+                CMND: obj.cmnd,
+                ADDRESS: obj.address,
+                So_KH: obj.num1,
+                So_KH_Ngoai: obj.num2
+            }
+        }
+
+        result.Phong.$.Tinh_trang ='Đã thuê';
+        result.Phong.Danh_sach_thue_phong[0].Thue_phong.push(phieu_thue);
+        //ghi
+        var builder  = new xml2js.Builder();
+        var xml= builder.buildObject(result);
+        fs.writeFile(filePath, xml, err=>{
+            if(err){
+                throw(err);
+            }
+        });
+    })
+
+
+    res.writeHead(200,contentType)
+    res.end();
+}
 
 module.exports = {
+    checkIn:checkIn,
     get_Danh_sach_loai_phong:get_Danh_sach_loai_phong,
     get_Danh_sach_phong:get_Danh_sach_phong,
     get_Danh_sach_thuc_an:get_Danh_sach_thuc_an,
