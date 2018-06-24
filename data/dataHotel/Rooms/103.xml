@@ -1,5 +1,6 @@
-<Phong Ma_so="103" Tam_ngung='false'  src='http://localhost:3002/img/rooms/103.jpg'  Loai_phong="Phòng đôi" Tang="Tầng 1" Gia_thue = "200000" Tinh_trang = "Trống" >
-    <Danh_sach_thue_phong>
-
-    </Danh_sach_thue_phong>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Phong Ma_so="103" Tam_ngung="false" src="http://localhost:3002/img/rooms/103.jpg" Loai_phong="Phòng đôi" Tang="Tầng 1" Gia_thue="200000" Tinh_trang="Trống">
+  <Danh_sach_thue_phong>
+    <Thue_phong Ten_KH="Lý Thanh Thanh" CMND="253252352" ADDRESS="Cộng Hòa" So_KH="1" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-24"/>
+  </Danh_sach_thue_phong>
 </Phong>

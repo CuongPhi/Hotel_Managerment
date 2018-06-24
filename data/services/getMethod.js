@@ -18,13 +18,8 @@ var get_Danh_sach_ten_phong_trong=()=>{
         parser.parseString(data, function (err, result) {
            // console.log(result.Phong.$.Tam_ngung)
            if(result.Phong.$.Tam_ngung === 'false' && result.Phong.$.Tinh_trang === 'Trống'){
-               console.log(result)
-                Danh_sach_phong.push({'Room' : {
-                    Loai_phong:result.Phong.$.Loai_phong,
-                    Ma_so: result.Phong.$.Ma_so, 
-                    Gia_thue:result.Phong.$.Gia_thue
-                } 
-            });
+               //console.log(result)
+                Danh_sach_phong.push({'Room' : result.Phong.$});            
            }
         });
     });
@@ -65,6 +60,23 @@ var get_Danh_sach_loai_phong=()=>{
    // console.log(xml)
     return xml
 }
+var get_danh_sach_phong_thue=()=>{
+    Danh_sach_phong=[];
+    fs.readdirSync(path + '/Rooms/').forEach(file => {
+        var filePath = path + '/Rooms/' + file
+        var data = fs.readFileSync(filePath, 'utf-8');
+        var parser = new xml2js.Parser()
+        parser.parseString(data, function (err, result) {
+           if(result.Phong.$.Tam_ngung === 'false' && result.Phong.$.Tinh_trang === 'Đã thuê'){
+                Danh_sach_phong.push({'Room' : result.Phong.$});
+           }
+        });
+    });
+    var builder = new xml2js.Builder()
+    var xml = builder.buildObject(Danh_sach_phong);
+   // console.log(xml)
+    return xml
+}
 var get_Danh_sach_thuc_an=()=>{
     DS_thuc_an=[];
     fs.readdirSync(path + '/Services/').forEach(file => {
@@ -85,19 +97,19 @@ checkIn= (obj, res)=>{
     var dataFile= fs.readFileSync(filePath, 'utf-8');
     var parser =  new xml2js.Parser();
     parser.parseString(dataFile, (err,result)=>{
-
-
         var phieu_thue={
             '$':{
                 Ten_KH : obj.name,
                 CMND: obj.cmnd,
                 ADDRESS: obj.address,
                 So_KH: obj.num1,
-                So_KH_Ngoai: obj.num2
+                So_KH_Ngoai: obj.num2,
+                Ngay_bat_dau : obj.dateIn
             }
         }
 
         result.Phong.$.Tinh_trang ='Đã thuê';
+    
         result.Phong.Danh_sach_thue_phong[0].Thue_phong.push(phieu_thue);
         //ghi
         var builder  = new xml2js.Builder();
@@ -113,11 +125,15 @@ checkIn= (obj, res)=>{
     res.writeHead(200,contentType)
     res.end();
 }
-
+getPhongThue=(id)=>{
+    return null;
+}
 module.exports = {
+    getPhongThue:getPhongThue,
     checkIn:checkIn,
     get_Danh_sach_loai_phong:get_Danh_sach_loai_phong,
     get_Danh_sach_phong:get_Danh_sach_phong,
     get_Danh_sach_thuc_an:get_Danh_sach_thuc_an,
-    get_Danh_sach_ten_phong_trong:get_Danh_sach_ten_phong_trong
+    get_Danh_sach_ten_phong_trong:get_Danh_sach_ten_phong_trong,
+    get_danh_sach_phong_thue:get_danh_sach_phong_thue
 }

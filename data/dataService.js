@@ -19,25 +19,13 @@ app.createServer((req, res) => {
             var getMethod = require('./services/getMethod.js')
 
             switch(req.url){
-                case '/CuaHang':
-                    if(checkAuth(req.headers) === true){
-                        res.writeHeader(200, {'Content-Type': 'text/xml'})
-                        var data =  getMethod.get_CuaHang()
-                        res.end(data)
-                    }
-                    else {
-                        res.writeHeader(404, {'Content-Type': 'text/plain'})
-                        res.end("Request was not support!!!")
-                    }
-                    break
-
-                case '/DanhSach_Tivi':
-
-                    res.writeHeader(200, {'Content-Type': 'text/xml'})
-                    var data = getMethod.get_DanhSach_Tivi()
+               case '/get_danh_sach_phong_thue': {
+                    res.writeHeader(200, content_type);
+                    var data = getMethod.get_danh_sach_phong_thue();
                     res.end(data)
-                    break
-
+                break
+               }
+               break;
                 case '/Danh_sach_phong':
                     res.writeHeader(200, content_type);
                     var data = getMethod.get_Danh_sach_phong()
@@ -50,17 +38,22 @@ app.createServer((req, res) => {
                     res.end(data)
                     break
 
-                    case '/Danh_sach_thuc_an':
+                case '/Danh_sach_thuc_an':
                     res.writeHeader(200, content_type);
                     var data = getMethod.get_Danh_sach_thuc_an()
                     res.end(data)
                     break
-                    case '/get_Danh_sach_ten_phong_trong':
+                case '/get_Danh_sach_ten_phong_trong':
                     res.writeHeader(200, content_type);
                     var data = getMethod.get_Danh_sach_ten_phong_trong()
                     res.end(data)
                     break
-
+                 case '/getPhongThue':
+                    res.writeHeader(200, content_type);
+                    console.log(req.url);
+                    var data = getMethod.getPhongThue(req.url)
+                    res.end(data)
+                    break
                 default:
                     res.writeHeader(404, {'Content-Type': 'text/plain'})
                     res.end("Request was not support!!!")
@@ -82,7 +75,7 @@ app.createServer((req, res) => {
                     }).on('end', () => {
                       
                      var objCheckIn = JSON.parse(body);
-                     console.log(objCheckIn);
+                     //console.log(objCheckIn);
 
                      getMethod.checkIn(objCheckIn,res);
                                         

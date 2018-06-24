@@ -24,6 +24,11 @@ var  Phongs=[];
 loadCbbRooms=()=>{
     var cbb =document.getElementById('cbbRooms');
     var phongs= danh_sach_ten_phong_trong();
+    if(phongs.length == 0){
+        $('#lbErr').text('Hết phòng');
+        $('i').show();
+        $('button[name=btnChoThue]').hide();
+    }
     phongs.forEach(e=>{
         let tmp=document.createElement('option');
         tmp.text = e.Loai_phong + ' ' +e.Ma_so + ' - '+ (parseInt(e.Gia_thue)).toLocaleString('vi', {style : 'currency', currency : 'VND'});
@@ -42,9 +47,9 @@ choThuePhong=()=>{
     var numofCusFor = $('select[name=sl2]').val()+"";
     var idRoom = $('select[name=cbbRooms]').val() + "";
     var dateIn = $('#dateIn').val()+"";
-    console.log(dateIn);
-    return;
+  
     if(CMNDCus ==""){
+        $('#lbErr').text('Hãy nhập CMND chính xác');
         $('i').show();
         console.log('CMND lỗi');
         return;
@@ -56,7 +61,8 @@ choThuePhong=()=>{
         'address' : `${addCus}`,
         'num1' : `${numofCus}`,
         'num2' : `${numofCusFor}`,
-        'idroom' : `${idRoom}`
+        'idroom' : `${idRoom}`,
+        'dateIn': `${dateIn}`
     });
     $.ajax({
         assign:false,
@@ -66,11 +72,10 @@ choThuePhong=()=>{
         url: 'http://localhost:3001/choThuePhong',
         statusCode: {
             404: function() {
-              console.log( "cookie not have" );
+                window.location.assign('http://localhost:3002/login.html')
             },
             200: function(){
-                console.log( "cookie ok" );
-
+              window.location.assign('http://localhost:3002/Staff.html')
             }
 
           }
