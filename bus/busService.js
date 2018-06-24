@@ -2,6 +2,8 @@ var app = require("http");
 var url = require("url");
 var query = require("querystring");
 var login = require("./services/loginServices.js");
+var dataService = require("./services/dataService.js");
+
 var port = 3001;
 var session = [];
 var qs = require("querystring");
@@ -48,15 +50,45 @@ app
                     console.log("fail to login");
                     data = "fail"
                   }
-                
-
                 res.writeHead(stt, contentType);
                 res.end(data);
                 console.log("--> length of session : " + login.getLenght());
               });
             }
             break;
-
+          case '/choThuePhong':
+            {
+              var dataEnd="";
+              contentType = {
+                "Content-Type": "text/plain",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS"
+              }
+              
+              var body ="";
+              req.on("data", function(data) {
+                body += data;
+              });
+              req.on("end", function() {
+              var dataBody = JSON.parse(body);              
+              var key = dataBody.id.split('=');
+              var sessiongKey= key[1];
+              if(login.checkAuth(sessiongKey)){              
+                console.log(body);
+                dataService.checkInRoom(body,res);
+              
+               }
+               else{
+                res.writeHead(404, contentType);
+                res.end("fail"); 
+               }
+              });
+              
+              //console.log(key[1]);
+             
+              
+            } 
+          break;  
           default:
             break;
         }

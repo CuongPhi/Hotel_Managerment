@@ -10,7 +10,10 @@ var port = 3000
 
 app.createServer((req, res) => {
     console.log(`${req.method} ${req.url}`);
-    
+    var content_type = {'Content-Type': 'text/xml',              
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE"
+   }
     switch(req.method) {
         case 'GET':
             var getMethod = require('./services/getMethod.js')
@@ -36,36 +39,24 @@ app.createServer((req, res) => {
                     break
 
                 case '/Danh_sach_phong':
-                    res.writeHeader(200, {'Content-Type': 'text/xml',              
-                     "Access-Control-Allow-Origin": "*",
-                     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE"
-                    });
+                    res.writeHeader(200, content_type);
                     var data = getMethod.get_Danh_sach_phong()
                     res.end(data)
                     break
 
                 case '/Danh_sach_loai_phong':
-                    res.writeHeader(200, {'Content-Type': 'text/xml',              
-                     "Access-Control-Allow-Origin": "*",
-                     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE"
-                    });
+                    res.writeHeader(200, content_type);
                     var data = getMethod.get_Danh_sach_loai_phong()
                     res.end(data)
                     break
 
                     case '/Danh_sach_thuc_an':
-                    res.writeHeader(200, {'Content-Type': 'text/xml',              
-                     "Access-Control-Allow-Origin": "*",
-                     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE"
-                    });
+                    res.writeHeader(200, content_type);
                     var data = getMethod.get_Danh_sach_thuc_an()
                     res.end(data)
                     break
                     case '/get_Danh_sach_ten_phong_trong':
-                    res.writeHeader(200, {'Content-Type': 'text/xml',              
-                     "Access-Control-Allow-Origin": "*",
-                     "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE"
-                    });
+                    res.writeHeader(200, content_type);
                     var data = getMethod.get_Danh_sach_ten_phong_trong()
                     res.end(data)
                     break
@@ -82,39 +73,20 @@ app.createServer((req, res) => {
             var getMethod = require('./services/getMethod.js')
 
             switch(req.url){
-                case '/login':
-                    // console.log(req.headers)
-                    // console.log(req.body)
-
+              
+                case '/checkIn':
+                    
                     let body = [];
                     req.on('data', (chunk) => {
                         body.push(chunk)
                     }).on('end', () => {
-                        body = Buffer.concat(body).toString()
+                      
+                     var objCheckIn = JSON.parse(body);
+                     console.log(objCheckIn);
+                     res.writeHeader(200, content_type)
+                     res.end("---> checkIn ok");
 
-                        // body = body.split('--X-INSOMNIA-BOUNDARY')
-                        // console.log(body)
-                        // body.splice(0,0)
-                        // body.splice(body.size, 1)
-
-
-
-                        // var reg = /--X-INSOMNIA-BOUNDARY/gi
-                        // body = body.replace(reg,'|')
-                        // reg = /Content-Disposition: form-data;/gi
-                        // body = body.replace(reg,'|')
-                        // reg = /(\\r\\n\\r)/gi
-                        // body = body.replace(reg,'&')
-                        // console.log(body)
-                        // var arrString = body.split('--X-INSOMNIA-BOUNDARY\r\nContent-Disposition: form-data;')
-                        //
-                        // console.log(arrString)
                     })
-
-                    session.push(101)
-                    console.log(session)
-                    res.writeHeader(200, {'Content-Type': 'text/plain'})
-                    res.end('101')
                     break
 
                 default:

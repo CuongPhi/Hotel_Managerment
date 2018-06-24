@@ -17,7 +17,7 @@ var  Phongs=[];
             })
         } 
     });
-    console.log(Phongs)
+    //console.log(Phongs)
     return Phongs;
 };
 
@@ -31,4 +31,54 @@ loadCbbRooms=()=>{
         
         cbb.add(tmp);
     });
+}
+
+choThuePhong=()=>{
+    var cookie = document.cookie;
+    var nameCus = $('#name_CUS').val()+"";
+    var CMNDCus = $('#CMND_CUS').val()+"";
+    var addCus = $('#add_CUS').val()+"";
+
+    var numofCus = $('select[name=sl1]').val()+"";
+    var numofCusFor = $('select[name=sl2]').val()+"";
+
+    if(CMNDCus ==""){
+        $('i').show();
+        console.log('CMND lỗi');
+        return;
+    }
+    dataCookie = JSON.stringify({
+        'id': `${cookie}`,
+        'name': `${nameCus}`,
+        'cmnd' : `${CMNDCus}`,
+        'address' : `${addCus}`,
+        'num1' : `${numofCus}`,
+        'num2' : `${numofCusFor}`
+
+    });
+    $.ajax({
+        assign:false,
+        type: "POST",
+        dataType: '',
+        data : dataCookie,
+        url: 'http://localhost:3001/choThuePhong',
+        statusCode: {
+            404: function() {
+              console.log( "cookie not have" );
+            },
+            200: function(){
+                console.log( "cookie ok" );
+
+            }
+
+          }
+    })
+}
+
+clearAll=()=>{
+    $('#name_CUS').val('');
+    $('#CMND_CUS').val('');
+    $('#add_CUS').val('');
+    $('#name_CUS').val('');
+    $('i').hide();
 }

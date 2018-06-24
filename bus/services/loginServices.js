@@ -2,8 +2,7 @@ const fs =require('fs');
 var list_Account = JSON.parse(fs.readFileSync(__dirname + '/account.json','utf-8'));
 var session=[];
 
-function checkAuth(headers){
-    var key = headers.key
+function checkAuth(key){
     for(var i = 0; i < session.length; i++){
         if(key == session[i]){
             return true

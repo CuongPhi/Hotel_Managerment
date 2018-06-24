@@ -82,7 +82,7 @@
 <br/>
 <br/>
 
-<form id="par_container" action="#" method="POST"  class="container">
+<form id="par_container"  class="container">
     
     <div id='main_container' class="panel panel-default">
         <div class="panel-heading">
@@ -100,37 +100,50 @@
                 <table id="table_Phongs" class="table table-striped table-bordered text-center align-middle">
                     <tr>
                         <th width="300px">Tên khách hàng</th>
-                        <th width='100px'>
-                            Loại khách
+                        <th width='150px'>
+                            Số khách
+                        </th>
+                        <th width='170px'>
+                            Khách ngoại
                         </th>
                         <th >
                             CMND (<span style="color: red; font-size: 18px">*</span>)
                         </th>
             
-                        <th width=500px> Địa chỉ</th>
+                        <th > Địa chỉ</th>
                     </tr>
                     <tr >
                         <th > 
-                            <input style="width: 250px" type="text" name="name_cus"/>
+                            <input style="width: 250px" id="name_CUS"  type="text" name="name_CUS"/>
                         </th>
                         <th>
-                            <select>
-                                <option value="inside">Nội địa</option>
-                                <option value="outSide" >Nước ngoài</option>
-                              
+                            <select name="sl1">
+                                <option value="1">1 Người</option>
+                                <option value="2" >2 Người</option>
+                                <option value="3" >3 Người</option>
+
                               </select>
                         </th>
                         <th>
-                            <input type="text" name="cmnd_cus"/>
+                            <select name="sl2">
+                                <option value="0">0 Người</option>
+                                <option value="1" >1 Người</option>
+                                <option value="2" >2 Người</option>
+                                <option value="3" >3 Người</option>
+
+                              </select>
+                        </th>
+                        <th>
+                            <input id="CMND_CUS"  type="text" name="cmnd_cus"/>
 
                         </th>
             
                         <th > 
-                            <input type="text" style="width: 400px" name="address"/>
+                            <input type="text" id="add_CUS"  style="width: 300px" name="address"/>
 
                         </th>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <th > 
                             <input type="text" style="width: 250px"  name="name_cus"/>
                         </th>
@@ -142,7 +155,7 @@
                               </select>
                         </th>
                         <th>
-                            <input type="text"   name="cmnd_cus"/>
+                            <input type="text" class="input_CMND"  name="cmnd_cus"/>
 
                         </th>
             
@@ -163,7 +176,7 @@
                               </select>
                         </th>
                         <th>
-                            <input type="text" name="cmnd_cus"/>
+                            <input type="text" class="input_CMND" name="cmnd_cus"/>
 
                         </th>
             
@@ -171,12 +184,15 @@
                             <input type="text" style="width: 400px" name="address"/>
 
                         </th>
-                    </tr>
+                    </tr> -->
                
 
                 </table>
                 </div>
-                <button class="btn btn-success" type="submit">Cho Khách Thuê</button>
+                <i id="lbErr" style="display: block; color: red"> Hãy nhập CMND chính xác !</i>
+                <button class="btn btn-success" onclick="choThuePhong()" type="button">Cho Khách Thuê</button>
+                <button class="btn btn-success" onclick="clearAll()" type="button">Xóa hết</button>
+
             </div>
         </div>
 </form>
@@ -185,7 +201,7 @@
     
 </div>
 <script>
-  
+    
     // function clickImg(id) {
     //     $.ajax({
     //         url: "/Home/Slider/"+id,
@@ -310,6 +326,7 @@
         return local.toJSON().slice(0,10);
     });
         $('#dateIn').val(new Date().toDateInputValue());
+        $('i').hide();
     </script>
 </body>
 </html>

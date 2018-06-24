@@ -1,5 +1,4 @@
-<Phieu_thue Ma_phieu='001' Ma_phong='001' Ngay_bat_dau='2018-6-6' Trang_thai ='false'>
-        <Khach_hang  Ten_khach_hang='Nguyễn Văn Long' Loai_khach= 'Nội địa' CMND ='281156547' Dia_chi = '23 Trường Chinh' />
-        <Khach_hang  Ten_khach_hang='Nguyễn Văn Hùng' Loai_khach= 'Nội địa' CMND ='281166522' Dia_chi = '51/2 Lý Thường Kiệt' />
-        <Khach_hang  Ten_khach_hang='Phạm Thị Giang' Loai_khach= 'Nội địa' CMND ='282352132' Dia_chi = '78 Bình Long' />
+<Phieu_thue
+ Ten_khach_hang='Nguyễn Văn Long' Loai_khach= 'Nước ngoài' CMND ='281156547' So_nguoi='2' So_khach_ngoai='1'
+ Dia_chi = '23 Trường Chinh'  Ma_phieu='001' Ma_phong='001' Ngay_bat_dau='2018-6-6' Trang_thai ='false'>
 </Phieu_thue>
