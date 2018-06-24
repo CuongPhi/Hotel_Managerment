@@ -48,12 +48,7 @@ app.createServer((req, res) => {
                     var data = getMethod.get_Danh_sach_ten_phong_trong()
                     res.end(data)
                     break
-                 case '/getPhongThue':
-                    res.writeHeader(200, content_type);
-                    console.log(req.url);
-                    var data = getMethod.getPhongThue(req.url)
-                    res.end(data)
-                    break
+               
                 default:
                     res.writeHeader(404, {'Content-Type': 'text/plain'})
                     res.end("Request was not support!!!")
@@ -82,7 +77,17 @@ app.createServer((req, res) => {
 
                     })
                     break
-
+                case '/getPhongThue': 
+                        let data = [];
+                        req.on('data', (chunk) => {
+                            data.push(chunk)
+                        }).on('end', () => {
+                        
+                        var obj = JSON.parse(data);
+                        console.log(obj)                   
+                        getMethod.getPhongThue(obj,res) 
+                    })             
+                    break
                 default:
                     res.writeHeader(404, {'Content-Type': 'text/plain'})
                     res.end("Request was not support!!!")

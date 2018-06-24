@@ -36,19 +36,7 @@ loadDataPhongs = function() {
     }
   });
 };
-// tao_danh_sach_phong = ds => {
-//  Phongs= new Array();
-//   for (let i = 0; i < ds.length; i++) {
-//     var phong = {
-//       Ma_so: ds[i].getElementsByTagName("Ma_so")[0].innerHTML,
-//       Loai_phong: ds[i].getElementsByTagName("Loai_phong")[0].innerHTML,
-//       Tang: ds[i].getElementsByTagName("Tang")[0].innerHTML,
-//       Gia_thue: ds[i].getElementsByTagName("Gia_thue")[0].innerHTML,
-//       Tinh_trang: ds[i].getElementsByTagName("Tinh_trang")[0].innerHTML
-//     };
-//     Phongs.push(phong);
-//   }
-// };
+
 
 onloadPage = () => {
   loadDataPhongs();

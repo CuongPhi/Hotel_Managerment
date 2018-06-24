@@ -118,6 +118,9 @@ checkIn= (obj, res)=>{
             if(err){
                 throw(err);
             }
+            else{
+               // res.end('');
+            }
         });
     })
 
@@ -125,8 +128,37 @@ checkIn= (obj, res)=>{
     res.writeHead(200,contentType)
     res.end();
 }
-getPhongThue=(id)=>{
-    return null;
+getPhongThue=(obj,res)=>{
+    console.log(obj)
+    var filePath = path + '/Rooms/' + obj.id +".xml";
+    var dataFile= fs.readFileSync(filePath, 'utf-8');
+    var parser =  new xml2js.Parser();
+    parser.parseString(dataFile, (err,result)=>{    
+        if(err =>{
+            res.writeHead(404);
+            return;
+        })
+        var p=result.Phong;
+        var c= p.Danh_sach_thue_phong[0].Thue_phong;
+        //console.log(c[c.length-1]);   
+       // console.log(p)
+         var phieu_thue_=  c[c.length-1].$;
+         var obj_Return = {
+                'ma_p': p.$.Ma_so,
+                'loai_p' : p.$.Loai_phong,
+                'gia_p':p.$.Gia_thue,
+                'name' : phieu_thue_.Ten_KH,
+                'cmnd' : phieu_thue_.CMND,
+                'address' : phieu_thue_.ADDRESS,
+                'so_kh': phieu_thue_.So_KH,
+                'so_kh_ngoai':phieu_thue_.So_KH_Ngoai,
+                'datein': phieu_thue_.Ngay_bat_dau
+         }       
+         res.writeHead(200,contentType)
+         res.end(JSON.stringify(obj_Return));
+    })
+
+    
 }
 module.exports = {
     getPhongThue:getPhongThue,
