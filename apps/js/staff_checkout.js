@@ -1,4 +1,6 @@
 var total= 0;
+var idR_sl = -1;
+var obj_sl;
 danh_sach_phong_thue = function() {
     var  Phongs=[];  
       $.ajax({
@@ -50,6 +52,7 @@ $('select').on('change', function (e) {
         //console.log(valueSelected)
 
         if(valueSelected!='-1'){
+            idR_sl=valueSelected;
             var dt= JSON.stringify({
                 'id':`${valueSelected}`,
                 'date' : '123'
@@ -61,10 +64,10 @@ $('select').on('change', function (e) {
                 url: 'http://localhost:3000/getPhongThue',
                 success: function (xml) {
                         var obj = JSON.parse(xml);
-                        console.log(obj)
+                        obj_sl=obj;
                         var gia= parseInt(obj.gia_p);
                         $('#price_room').val(gia.toLocaleString('vi', {style : 'currency', currency : 'VND'}));
-                       
+                        
                         $('#type_room').val(obj.loai_p);
 
                         $('#id_room').val(obj.ma_p);
@@ -83,7 +86,7 @@ $('select').on('change', function (e) {
 
                         var numOfDay=days_between( new Date(Date.now()), new Date(obj.datein));
                         $('#numofday').val(numOfDay);
-
+                        obj_sl.numofday = numOfDay;
                         var don_gia=parseFloat(obj.gia_p);
                         var KH_ngoai= parseInt(obj.so_kh_ngoai);
                         if(KH_ngoai>0 && KH_ngoai!=null){
@@ -92,13 +95,16 @@ $('select').on('change', function (e) {
                          if(obj.so_kh=='3'){
                             don_gia+=parseInt((parseFloat(obj.gia_p)*0.25));
                          }
-                         
+                         obj_sl.don_gia_moi= don_gia.toString();
                         $('#phuthu').val(don_gia.toLocaleString('vi', {style : 'currency', currency : 'VND'}));
                         $('#sale').val(0); 
                         var totalPrice = don_gia* parseInt(numOfDay);
-                        total = totalPrice;
+                        obj_sl.total = totalPrice.toString();
                         $('#tong_tien').val(totalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'}));
-                        $('#total').val(total.toLocaleString('vi', {style : 'currency', currency : 'VND'}))
+                        $('#total').val(totalPrice.toLocaleString('vi', {style : 'currency', currency : 'VND'}))
+                        obj_sl.total_end=obj_sl.total
+                        obj_sl.ghi_chu= $('#note').val()+"";
+
                     }
                 });
         }else{
@@ -113,6 +119,72 @@ days_between=(date1,date2)=>{
 
 totalPrice=()=>{
     var giam_gia= parseInt($('#sale').val());
-   
-    $('#total').val(parseInt(total-giam_gia).toLocaleString('vi', {style : 'currency', currency : 'VND'}));
+    var c= parseInt(obj_sl.total-giam_gia)
+    $('#total').val(c.toLocaleString('vi', {style : 'currency', currency : 'VND'}));
+    obj_sl.total_end = c.toString();
 }
+
+
+choTraPhong=()=>{
+    var cookie = document.cookie;
+    obj_sl.ghi_chu= $('#note').val()+"";
+    obj_sl.name= $('#name_CUS').val()+"";
+    obj_sl.address=$('#add_CUS').val() +"";
+    obj_sl.cmnd=$('#CMND_CUS').val() +"";
+
+    console.log(obj_sl)
+    if(!obj_sl) {alert('Chọn phòng !'); return;}
+    dataCookie = JSON.stringify({      
+        'id': `${cookie}`,
+        'name': `${obj_sl.name+""}`,
+        'cmnd' : `${obj_sl.cmnd}`,
+        'address' : `${obj_sl.address+""}`,
+        'idroom' : `${obj_sl.ma_p}`,
+        'dateIn': `${obj_sl.datein}`,
+        'total_end' :`${obj_sl.total_end}`,
+        'total':`${obj_sl.total}`,
+        'so_kh_ngoai' : `${obj_sl.so_kh_ngoai}`,
+        'so_kh' : `${obj_sl.so_kh}`,
+        'numofday' :`${obj_sl.numofday}`,
+        'ghi_chu':`${obj_sl.ghi_chu+""}`,
+        'don_gia_moi':`${obj_sl.don_gia_moi}` 
+    });
+    $.ajax({
+        assign:false,
+        type: "POST",
+        dataType: '',
+        data : dataCookie,
+        url: 'http://localhost:3001/choTraPhong',
+        statusCode: {
+            404: function() {
+                window.location.assign('http://localhost:3002/login.html')
+            },
+            200: function(){
+              window.location.assign('http://localhost:3002/Staff_checkout.html')
+            }
+
+          }
+    })
+}
+
+dangXuat=()=>{
+    $.ajax({
+        assign:false,
+        type: "POST",
+        dataType: '',
+        data :  JSON.stringify({
+            'id' : `${document.cookie}`,
+            'name' :`staff`
+        }),
+        url: 'http://localhost:3001/logout',
+        statusCode: {
+            404: function() {
+                window.location.assign('http://localhost:3002/')
+            },
+            200: function(){
+              window.location.assign('http://localhost:3002/')
+            }
+
+          }
+    })  
+  }

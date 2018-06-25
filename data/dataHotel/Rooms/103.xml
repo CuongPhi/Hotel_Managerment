@@ -2,5 +2,8 @@
 <Phong Ma_so="103" Tam_ngung="false" src="http://localhost:3002/img/rooms/103.jpg" Loai_phong="Phòng đôi" Tang="Tầng 1" Gia_thue="200000" Tinh_trang="Đã thuê">
   <Danh_sach_thue_phong>
     <Thue_phong Ten_KH="Lý Thanh Thanh" CMND="253252352" ADDRESS="Cộng Hòa" So_KH="1" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-22"/>
+    <Thue_phong Ten_KH="Bùi Hoa" CMND="23522424" ADDRESS="Mỹ Phước" So_KH="2" So_KH_Ngoai="1" Ngay_bat_dau="2018-06-25"/>
+    <Thue_phong Ten_KH="Lê Văn Luông" CMND="2897566165" ADDRESS="Thụy Sĩ" So_KH="1" So_KH_Ngoai="1" Ngay_bat_dau="2018-06-25" Ghi_chu="giảm 50k" So_Ngay_Thue="1" Don_Gia_Moi="300000" Thanh_Tien="250000"/>
+    <Thue_phong Ten_KH="Thái Vân Linh" CMND="28115757" ADDRESS="Minh Hòa" So_KH="3" So_KH_Ngoai="2" Ngay_bat_dau="2018-06-25"/>
   </Danh_sach_thue_phong>
 </Phong>

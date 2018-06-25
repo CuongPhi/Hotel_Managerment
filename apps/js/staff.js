@@ -89,3 +89,25 @@ clearAll=()=>{
     $('#name_CUS').val('');
     $('i').hide();
 }
+dangXuat=()=>{
+    $.ajax({
+        assign:false,
+        type: "POST",
+        dataType: '',
+        data :  JSON.stringify({
+            'id' : `${document.cookie}`,
+            'name' :`staff`
+        }),
+        url: 'http://localhost:3001/logout',
+        statusCode: {
+            404: function() {
+                window.location.assign('http://localhost:3002/')
+            },
+            200: function(){
+              window.location.assign('http://localhost:3002/')
+            }
+
+          }
+    })  
+  
+  }

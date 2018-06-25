@@ -4,9 +4,9 @@
   "description": "Read and write (update) large Data file",
   "scripts": {
     "dataService": "nodemon data/dataService.js",
-    "Webserver": "nodemon apps/Webserver.js",
-    "busService": "nodemon bus/busService.js",
-    "start": "npm-run-all --parallel Webserver dataService busService"
+    "Webserver": "node apps/Webserver.js",
+    "test": "nodemon bus/busService.js",
+    "start": "npm-run-all --parallel Webserver dataService"
   },
   "repository": {
     "type": "git",

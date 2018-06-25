@@ -15,6 +15,27 @@ app
     switch (req.method) {
       case "POST":
         switch (req.url) {
+          case '/logout':
+          {
+            var dataLogout=""
+            req.on('data', (dt)=>{
+              dataLogout+=dt;
+            })
+            req.on('end', ()=>{
+              var cookie = JSON.parse(dataLogout);
+              var key = cookie.id.split('=');
+              var sessiongKey= key[1];
+              login.deleteSession(sessiongKey);
+              res.writeHead(200,contentType);
+              res.end()
+              
+            });
+            req.on('error',() =>{
+              res.writeHead(404,contentType);
+              res.end()
+            })
+          }
+          break;
           case "/login":
             {
               var jsonString = "";
@@ -34,13 +55,21 @@ app
                 var typeAccount =login.isExistAccount(account.userName, account.passWord);
                 if (typeAccount!=null) {
                     var ss = login.getSession(0, 10);
-                    login.addToSession(ss);
+                    var ty;
+                    
                     var link = "";
                     if(typeAccount === "Manager") {
                         link = "http://localhost:3002/manager.html"
+                        ty = 0;
                     }else if(typeAccount === "Staff"){
                         link = "http://localhost:3002/staff.html"   
+                        ty = 1;
                     }
+                    var ssObj = {
+                      'key'  : ss.toString(),
+                       'type' : ty.toString()
+                   }
+                   login.addToSession(ssObj);
                     data = JSON.stringify({
                         "link": link,
                         "key": `${ss}`
@@ -73,7 +102,7 @@ app
               var dataBody = JSON.parse(body);              
               var key = dataBody.id.split('=');
               var sessiongKey= key[1];
-              if(login.checkAuth(sessiongKey)){              
+              if(login.checkAuth(sessiongKey)==1){              
                 console.log(body);
                 dataService.checkInRoom(body,res);
               
@@ -83,12 +112,36 @@ app
                 res.end("fail"); 
                }
               });
-              
-              //console.log(key[1]);
-             
-              
+                           
             } 
           break;  
+          case '/choTraPhong':
+            {
+              contentType = {
+                "Content-Type": "text/plain",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS"
+              }
+              
+              var body ="";
+              req.on("data", function(data) {
+                body += data;
+              });
+              req.on("end", function() {
+              var dataBody = JSON.parse(body);              
+              var key = dataBody.id.split('=');
+              var sessiongKey= key[1];
+              if(login.checkAuth(sessiongKey)==1){              
+                console.log(dataBody);
+                dataService.checkOutRoom(body,res);              
+               }
+               else{
+                res.writeHead(404, contentType);
+                res.end("fail"); 
+               }
+              });              
+            } 
+          break;
           default:
             break;
         }

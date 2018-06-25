@@ -127,6 +127,57 @@ checkIn= (obj, res)=>{
 
     res.writeHead(200,contentType)
     res.end();
+    console.log('data Sevice ---> thue phong ' + obj.id + " ok !")
+
+}
+checkOut=(obj, res)=>{
+    console.log(obj)
+      var filePath = path + '/Rooms/' + obj.idroom +".xml";
+    var dataFile= fs.readFileSync(filePath, 'utf-8');
+    var parser =  new xml2js.Parser();
+    parser.parseString(dataFile, (err,result)=>{    
+        if(err =>{
+            res.writeHead(404);
+            return;
+        })     
+
+    
+        var phieu_thue={
+            '$':{
+                Ten_KH : obj.name,
+                CMND: obj.cmnd,
+                ADDRESS: obj.address,
+                So_KH: obj.so_kh,
+                So_KH_Ngoai: obj.so_kh_ngoai,
+                Ngay_bat_dau : obj.dateIn,
+                Ghi_chu : obj.ghi_chu,
+                So_Ngay_Thue : obj.numofday,
+                Don_Gia_Moi: obj.don_gia_moi,
+                Thanh_Tien : obj.total_end
+            }
+        }
+        var p = result.Phong;
+         p.$.Tinh_trang ='Trống';
+        var c= p.Danh_sach_thue_phong[0].Thue_phong;
+        c.pop();
+        c.push(phieu_thue);
+
+          //ghi
+          var builder  = new xml2js.Builder();
+          var xml= builder.buildObject(result);
+          fs.writeFile(filePath, xml, err=>{
+              if(err){
+                  throw(err);
+              }
+              else{
+                 // res.end('');
+              }
+          });
+         
+    })
+    res.writeHead(200,contentType)
+    res.end();
+    console.log('data Sevice ---> tra phong ' + obj.id + " ok !")
 }
 getPhongThue=(obj,res)=>{
     console.log(obj)
@@ -157,12 +208,10 @@ getPhongThue=(obj,res)=>{
          res.writeHead(200,contentType)
          res.end(JSON.stringify(obj_Return));
     })
-
-    
 }
 module.exports = {
     getPhongThue:getPhongThue,
-    checkIn:checkIn,
+    checkIn:checkIn, checkOut:checkOut,
     get_Danh_sach_loai_phong:get_Danh_sach_loai_phong,
     get_Danh_sach_phong:get_Danh_sach_phong,
     get_Danh_sach_thuc_an:get_Danh_sach_thuc_an,

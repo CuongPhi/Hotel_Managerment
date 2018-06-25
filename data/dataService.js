@@ -61,29 +61,37 @@ app.createServer((req, res) => {
             var getMethod = require('./services/getMethod.js')
 
             switch(req.url){
-              
+                case '/checkOut':
+                    
+                let body = [];
+                req.on('data', (chunk) => {
+                    body.push(chunk)
+                }).on('end', () => {                  
+                 var objCheckIn = JSON.parse(body);              //console.log(objCheckIn);
+                 getMethod.checkOut(objCheckIn,res);                                    
+
+                })
+                break
                 case '/checkIn':
                     
-                    let body = [];
+                    let dataCheckout = [];
                     req.on('data', (chunk) => {
-                        body.push(chunk)
+                        dataCheckout.push(chunk)
                     }).on('end', () => {
                       
-                     var objCheckIn = JSON.parse(body);
-                     //console.log(objCheckIn);
+                     var objCheckIn = JSON.parse(dataCheckout);                     //console.log(objCheckIn);
 
-                     getMethod.checkIn(objCheckIn,res);
-                                        
+                     getMethod.checkIn(objCheckIn,res);                                        
 
                     })
                     break
                 case '/getPhongThue': 
-                        let data = [];
+                        let dataCheckIn = [];
                         req.on('data', (chunk) => {
-                            data.push(chunk)
+                            dataCheckIn.push(chunk)
                         }).on('end', () => {
                         
-                        var obj = JSON.parse(data);
+                        var obj = JSON.parse(dataCheckIn);
                         console.log(obj)                   
                         getMethod.getPhongThue(obj,res) 
                     })             
