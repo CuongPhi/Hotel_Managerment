@@ -28,6 +28,28 @@ var get_Danh_sach_ten_phong_trong=()=>{
     console.log(xml)
     return xml
 }
+
+var get_Danh_sach_phong_quan_ly=()=>{
+    Danh_sach_phong=[];
+    fs.readdirSync(path + '/Rooms/').forEach(file => {
+        var filePath = path + '/Rooms/' + file
+        var data = fs.readFileSync(filePath, 'utf-8');
+        var parser = new xml2js.Parser()
+        parser.parseString(data, function (err, result) {
+           
+                Danh_sach_phong.push({'Room' : {
+                   Ma_so : result.Phong.$.Ma_so,
+                   Loai_phong : result.Phong.$.Loai_phong,
+
+                }});
+        });
+    });
+    var builder = new xml2js.Builder()
+    var xml = builder.buildObject(Danh_sach_phong);
+   // console.log(xml)
+    return xml
+}
+
 var get_Danh_sach_phong=()=>{
     Danh_sach_phong=[];
     fs.readdirSync(path + '/Rooms/').forEach(file => {
@@ -127,7 +149,7 @@ checkIn= (obj, res)=>{
 
     res.writeHead(200,contentType)
     res.end();
-    console.log('data Sevice ---> thue phong ' + obj.id + " ok !")
+    console.log('data Sevice ---> thue phong ' + obj.idroom + " ok !")
 
 }
 checkOut=(obj, res)=>{
@@ -177,10 +199,10 @@ checkOut=(obj, res)=>{
     })
     res.writeHead(200,contentType)
     res.end();
-    console.log('data Sevice ---> tra phong ' + obj.id + " ok !")
+    console.log('data Sevice ---> tra phong ' + obj.idroom + " ok !")
 }
 getPhongThue=(obj,res)=>{
-    console.log(obj)
+    //console.log(obj)
     var filePath = path + '/Rooms/' + obj.id +".xml";
     var dataFile= fs.readFileSync(filePath, 'utf-8');
     var parser =  new xml2js.Parser();
@@ -203,11 +225,45 @@ getPhongThue=(obj,res)=>{
                 'address' : phieu_thue_.ADDRESS,
                 'so_kh': phieu_thue_.So_KH,
                 'so_kh_ngoai':phieu_thue_.So_KH_Ngoai,
-                'datein': phieu_thue_.Ngay_bat_dau
+                'datein': phieu_thue_.Ngay_bat_dau,
+                'tang' : p.$.Tang,
+                'tam_ngung' : p.$.Tam_ngung
          }       
          res.writeHead(200,contentType)
          res.end(JSON.stringify(obj_Return));
     })
+}
+
+editRoom= (obj, res)=>{
+    var filePath = path + '/Rooms/' + obj.idroom +".xml";
+    var dataFile= fs.readFileSync(filePath, 'utf-8');
+    var parser =  new xml2js.Parser();
+    parser.parseString(dataFile, (err,result)=>{
+        console.log(obj);
+        console.log(result)
+
+        result.Phong.$.Loai_phong = obj.type;
+        result.Phong.$.Tang = obj.floor;
+        result.Phong.$.Tam_ngung = obj.block;
+        result.Phong.$.Gia_thue = obj.price;        
+        //ghi
+        var builder  = new xml2js.Builder();
+        var xml= builder.buildObject(result);
+        fs.writeFile(filePath, xml, err=>{
+            if(err){
+                throw(err);
+            }
+            else{
+               // res.end('');
+            }
+        });
+    })
+
+
+    res.writeHead(200,contentType)
+    res.end();
+    console.log('data Sevice ---> thue phong ' + obj.idroom + " ok !")
+
 }
 module.exports = {
     getPhongThue:getPhongThue,
@@ -216,5 +272,7 @@ module.exports = {
     get_Danh_sach_phong:get_Danh_sach_phong,
     get_Danh_sach_thuc_an:get_Danh_sach_thuc_an,
     get_Danh_sach_ten_phong_trong:get_Danh_sach_ten_phong_trong,
-    get_danh_sach_phong_thue:get_danh_sach_phong_thue
+    get_danh_sach_phong_thue:get_danh_sach_phong_thue,
+    get_Danh_sach_phong_quan_ly:get_Danh_sach_phong_quan_ly,
+    editRoom:editRoom
 }

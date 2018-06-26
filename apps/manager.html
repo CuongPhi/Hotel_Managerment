@@ -9,12 +9,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>List Rooms</title>
+    <title>Quản lý khách sạn</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Free HTML5 Website Template by GetTemplates.co" />
     <meta name="keywords" content="free website templates, free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
     <meta name="author" content="GetTemplates.co" />
-    
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+
     <!-- Facebook and Twitter integration -->
     <meta property="og:title" content="" />
     <meta property="og:image" content="" />
@@ -43,11 +44,11 @@
                     </div>
                     <div class="col-xs-8 text-right menu-1">
                         <ul>
-                            <li class="has-dropdown">
+                            <!-- <li class="has-dropdown">
                                 <a href="staff.html">Thuê phòng</a>
                                 
                             </li>
-                            <li><a class="nav-link" href="staff_checkout.html">Trả phòng</a></li>
+                            <li><a class="nav-link" href="staff_checkout.html">Trả phòng</a></li> -->
                      
                             <li onclick="dangXuat()" class="has-dropdown">
                                 <a href="#" >Đăng xuất</a>
@@ -89,12 +90,12 @@
             <h3 style="text-align: center; font-weight: bold; font-size: 30px; color: cornflowerblue" class="panel-title">Quản lý phòng thuê</h3>
         </div>
         <div class="panel-body">
-            <strong style="margin: 0px 10px 10px 100px">Chọn phòng trả:</strong>
+            <strong style="margin: 0px 10px 10px 100px">Chọn Phòng:</strong>
             <select style="height: 33px" id="cbbRooms" name="cbbRooms">
-                <option value="-1" >Chọn phòng trả</option>
+                <option value="-1" >Chọn phòng</option>
             </select>
             
-            <div class="table-responsive">
+            <div class="table-responsive" style="margin-top: 10px">
           
                 <table id="table_Checkout" class="table table-striped table-bordered text-center align-middle">
                     <tr>
@@ -115,21 +116,21 @@
                     </tr>
                     <tr >
                         <th>
-                            <input id="id_room" style="width: 120px" type="text"/>
+                            <input readonly id="id_room" style="width: 120px" type="text"/>
    
                            </th>
                         <th>
-                        <select id="type">
-                            <option value="0">Phòng đơn </option>
-                            <option value="1">Phòng đôi </option>
-                            <option value="2">Phòng gia đình </option>
+                            <select id="type" name ='type_p'>
+                                <option value="Phòng đơn">Phòng đơn </option>
+                                <option value="Phòng đôi">Phòng đôi </option>
+                                <option value="Phòng gia đình">Phòng gia đình </option>
 
-                        </select>
+                            </select>
                         </th>
                         <th>
-                                <select id="tam_ngung">
-                                        <option value="0">Có </option>
-                                        <option value="1">Không </option>
+                                <select id="tam_ngung" name="block_p">
+                                        <option value="true">Có </option>
+                                        <option value="false">Không </option>
                                 </select>
                         </th>
                         <th>
@@ -146,7 +147,7 @@
                 </div>
                  <!-- <strong style="display: block;text-align: center; font-size: 25px">Thanh toán:  <input style="font-size: 20px;border-width:0px;border:none"  id="total" type="text" ></input> </strong>  -->
                 <!-- <i id="lbErr" style="display: block; ; color: red"> Hãy nhập CMND chính xác !</i> -->
-                <button style="display: block; margin: auto" name="btnChoThue" class="btn btn-success" onclick="" type="button">OK</button>
+                <button style="display: block; margin: auto" name="btnChoThue" class="btn btn-success" onclick="editRoom()" type="button">Cập nhật</button>
                 <!-- <button class="btn btn-success" onclick="clearAll()" type="button">Xóa hết</button> -->
 
             </div>

@@ -15,6 +15,33 @@ app
     switch (req.method) {
       case "POST":
         switch (req.url) {
+          case '/capNhatPhong':
+            {
+              contentType = {
+                "Content-Type": "text/plain",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS"
+              }
+              
+              var body_edit ="";
+              req.on("data", function(data) {
+                body_edit += data;
+              });
+              req.on("end", function() {
+              var dataBody = JSON.parse(body_edit);              
+              var key = dataBody.id.split('=');
+              var sessiongKey= key[1];
+              if(login.checkAuth(sessiongKey)==0){              
+                console.log(dataBody);
+                dataService.editRoom(body_edit,res);              
+               }
+               else{
+                res.writeHead(404, contentType);
+                res.end("fail"); 
+               }
+              });              
+            } 
+          break;
           case '/logout':
           {
             var dataLogout=""

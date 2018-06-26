@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Phong Ma_so="001" Tam_ngung="false" src="http://localhost:3002/img/rooms/001.jpg" Loai_phong="Phòng đơn" Tang="Tầng trệt" Gia_thue="150000" Tinh_trang="Trống">
+<Phong Ma_so="001" Tam_ngung="false" src="http://localhost:3002/img/rooms/001.jpg" Loai_phong="Phòng đôi" Tang="Tầng trệt " Gia_thue="180000" Tinh_trang="Trống">
   <Danh_sach_thue_phong>
     <Thue_phong Ten_KH="Cường Phi" CMND="281157576" ADDRESS="TPHCM" So_KH="2" So_KH_Ngoai="3" Ngay_bat_dau="2018-06-22" Ghi_chu="" So_Ngay_Thue="4" Don_Gia_Moi="225000" Thanh_Tien="900000"/>
     <Thue_phong Ten_KH="" CMND="ssssssss" ADDRESS="" So_KH="1" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-25" Ghi_chu="giảm giá 40k" So_Ngay_Thue="1" Don_Gia_Moi="150000" Thanh_Tien="110000"/>

@@ -19,6 +19,13 @@ app.createServer((req, res) => {
             var getMethod = require('./services/getMethod.js')
 
             switch(req.url){
+
+                case '/get_danh_danh_phong_quan_ly': {
+                    res.writeHeader(200, content_type);
+                    var data = getMethod.get_Danh_sach_phong_quan_ly();
+                    res.end(data)
+                break
+               }
                case '/get_danh_sach_phong_thue': {
                     res.writeHeader(200, content_type);
                     var data = getMethod.get_danh_sach_phong_thue();
@@ -84,7 +91,18 @@ app.createServer((req, res) => {
                      getMethod.checkIn(objCheckIn,res);                                        
 
                     })
-                    break
+                    break;
+                case '/editRoom':
+                    let editData = [];
+                    req.on('data', (chunk) => {
+                        editData.push(chunk)
+                    }).on('end', () => {
+                      
+                     var objEdit = JSON.parse(editData);                     //console.log(objCheckIn);
+
+                     getMethod.editRoom(objEdit,res);  
+                    })
+                    break;
                 case '/getPhongThue': 
                         let dataCheckIn = [];
                         req.on('data', (chunk) => {
@@ -92,7 +110,7 @@ app.createServer((req, res) => {
                         }).on('end', () => {
                         
                         var obj = JSON.parse(dataCheckIn);
-                        console.log(obj)                   
+                        //console.log(obj)                   
                         getMethod.getPhongThue(obj,res) 
                     })             
                     break
