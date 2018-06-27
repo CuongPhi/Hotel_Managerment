@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Phong Ma_so="203" Tam_ngung="false" src="http://localhost:3002/img/rooms/203.jpg" Loai_phong="Phòng đơn" Tang="Tầng 2" Gia_thue="150000" Tinh_trang="Trống">
+<Phong Ma_so="203" Tam_ngung="false" src="http://localhost:3002/img/rooms/203.jpg" Loai_phong="Phòng đơn" Tang="Tầng 2" Gia_thue="150000" Tinh_trang="Đã thuê">
   <Danh_sach_thue_phong>
     <Thue_phong So_ngay_thue="2" Gia_thue="200000" Thanh_tien="220000"/>
     <Thue_phong So_ngay_thue="3" Gia_thue="200000" Thanh_tien="210000"/>
     <Thue_phong Ten_KH="Trần Anh Vũ" CMND="23424242" ADDRESS="Thái Bình" So_KH="3" So_KH_Ngoai="1" Ngay_bat_dau="2018-06-22"/>
     <Thue_phong Ten_KH="Thái Tú" CMND="28445445" ADDRESS="Cà Mau" So_KH="3" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-25"/>
+    <Thue_phong Ten_KH="Bùi Văn Linh" CMND="789746641" ADDRESS="Nhật Bản" So_KH="2" So_KH_Ngoai="1" Ngay_bat_dau="2018-06-25" Ghi_chu="" So_Ngay_Thue="2" Don_Gia_Moi="225000" Thanh_Tien="440000"/>
+    <Thue_phong Ten_KH="Nguyễn Thành Long" CMND="159877446" ADDRESS="Thủ Đức" So_KH="2" So_KH_Ngoai="1" Ngay_bat_dau="2018-06-27" Ghi_chu="" So_Ngay_Thue="0" Don_Gia_Moi="225000" Thanh_Tien="0"/>
+    <Thue_phong Ten_KH="Lê Văn Sang" CMND="298787452" ADDRESS="Long Thành, Đồng Nai" So_KH="2" So_KH_Ngoai="1" Ngay_bat_dau="2018-06-27"/>
   </Danh_sach_thue_phong>
 </Phong>

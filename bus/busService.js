@@ -7,6 +7,11 @@ var dataService = require("./services/dataService.js");
 var port = 3001;
 var session = [];
 var qs = require("querystring");
+var contentType = {
+  "Content-Type": "text/plain",
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS"
+}
 
 app
   .createServer((req, res) => {
@@ -15,13 +20,51 @@ app
     switch (req.method) {
       case "POST":
         switch (req.url) {
+          case '/quanLy':
+          {
+            var body_ql ="";
+            req.on("data", function(data) {
+              body_ql += data;
+            });
+            req.on("end", function() {
+            var ql = JSON.parse(body_ql);              
+            var key = ql.id.split('=');
+            var sessiongKey= key[1];
+            if(login.checkAuth(sessiongKey)!=0){              
+              res.writeHead(404, contentType);
+              res.end("fail");              
+             }
+             else{
+              res.writeHead(200, contentType);
+              res.end("ok"); 
+             }
+            });              
+          }
+          break;
+          case '/nhanVien':
+          {
+            var body_nv ="";
+            req.on("data", function(data) {
+              body_nv += data;
+            });
+            req.on("end", function() {
+            var nv = JSON.parse(body_nv);              
+            var key = nv.id.split('=');
+            var sessiongKey= key[1];
+            if(login.checkAuth(sessiongKey)!=1){              
+              res.writeHead(404, contentType);
+              res.end("fail");              
+             }
+             else{
+              res.writeHead(200, contentType);
+              res.end("ok"); 
+             }
+            });              
+          }
+          break;
           case '/capNhatPhong':
             {
-              contentType = {
-                "Content-Type": "text/plain",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS"
-              }
+            
               
               var body_edit ="";
               req.on("data", function(data) {
@@ -73,11 +116,7 @@ app
               req.on("end", function() {
                 var account = JSON.parse(jsonString);
                 var data = "";
-                contentType = {
-                  "Content-Type": "text/plain",
-                  "Access-Control-Allow-Origin": "*",
-                  "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS"
-                };
+             
                 stt = 200;
                 var typeAccount =login.isExistAccount(account.userName, account.passWord);
                 if (typeAccount!=null) {
@@ -114,13 +153,8 @@ app
             break;
           case '/choThuePhong':
             {
-              var dataEnd="";
-              contentType = {
-                "Content-Type": "text/plain",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS"
-              }
               
+            
               var body ="";
               req.on("data", function(data) {
                 body += data;
@@ -144,12 +178,7 @@ app
           break;  
           case '/choTraPhong':
             {
-              contentType = {
-                "Content-Type": "text/plain",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS"
-              }
-              
+             
               var body ="";
               req.on("data", function(data) {
                 body += data;

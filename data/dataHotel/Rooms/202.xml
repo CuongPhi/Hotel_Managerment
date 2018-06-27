@@ -3,6 +3,8 @@
   <Danh_sach_thue_phong>
     <Thue_phong So_ngay_thue="2" Gia_thue="200000" Thanh_tien="220000"/>
     <Thue_phong So_ngay_thue="3" Gia_thue="200000" Thanh_tien="210000"/>
-    <Thue_phong Ten_KH="Nguyễn Du Du" CMND="2156478742" ADDRESS="Bình Chánh" So_KH="2" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-25"/>
+    <Thue_phong Ten_KH="Nguyễn Du Du" CMND="2156478742" ADDRESS="Bình Chánh" So_KH="2" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-25" Ghi_chu="" So_Ngay_Thue="2" Don_Gia_Moi="150000" Thanh_Tien="300000"/>
+    <Thue_phong Ten_KH="Lý Thái Minh" CMND="2113123321" ADDRESS="Vũng tàu" So_KH="1" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-27" Ghi_chu="" So_Ngay_Thue="0" Don_Gia_Moi="150000" Thanh_Tien="0"/>
+    <Thue_phong Ten_KH="Phạm Thanh Phong" CMND="284658798" ADDRESS="Long An" So_KH="2" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-27"/>
   </Danh_sach_thue_phong>
 </Phong>

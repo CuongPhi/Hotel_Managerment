@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Phong Ma_so="101" Tam_ngung="false" src="http://localhost:3002/img/rooms/101.jpg" Loai_phong="Phòng đơn" Tang="Tầng 1" Gia_thue="150000" Tinh_trang="Đã thuê">
+<Phong Ma_so="101" Tam_ngung="false" src="http://localhost:3002/img/rooms/101.jpg" Loai_phong="Phòng đơn" Tang="Tầng 1" Gia_thue="150000" Tinh_trang="Trống">
   <Danh_sach_thue_phong>
     <Thue_phong So_ngay_thue="2" Gia_thue="200000" Thanh_tien="220000"/>
     <Thue_phong Ten_KH="Nguyễn Thị Ngọc" CMND="2564123467" ADDRESS="Âu Cơ" So_KH="1" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-25" Ghi_chu="Giảm giá học sinh 70k" So_Ngay_Thue="1" Don_Gia_Moi="150000" Thanh_Tien="80000"/>
-    <Thue_phong Ten_KH="Phong Trần" CMND="174154646" ADDRESS="Gò Vấp" So_KH="1" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-25"/>
+    <Thue_phong Ten_KH="Phong Trần" CMND="174154646" ADDRESS="Gò Vấp" So_KH="1" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-25" Ghi_chu="" So_Ngay_Thue="2" Don_Gia_Moi="150000" Thanh_Tien="300000"/>
   </Danh_sach_thue_phong>
 </Phong>

@@ -216,6 +216,11 @@ getPhongThue=(obj,res)=>{
         //console.log(c[c.length-1]);   
        // console.log(p)
          var phieu_thue_=  c[c.length-1].$;
+         var doanh_thu = 0;
+         for(let i=0;i<c.length;i++){  
+             if(c[i].$.Thanh_Tien!=null)
+                  doanh_thu+= (parseInt(c[i].$.Thanh_Tien));
+         }
          var obj_Return = {
                 'ma_p': p.$.Ma_so,
                 'loai_p' : p.$.Loai_phong,
@@ -227,8 +232,11 @@ getPhongThue=(obj,res)=>{
                 'so_kh_ngoai':phieu_thue_.So_KH_Ngoai,
                 'datein': phieu_thue_.Ngay_bat_dau,
                 'tang' : p.$.Tang,
-                'tam_ngung' : p.$.Tam_ngung
-         }       
+                'tam_ngung' : p.$.Tam_ngung,
+                'doanh_thu' : doanh_thu
+
+         } 
+         console.log(obj_Return)      
          res.writeHead(200,contentType)
          res.end(JSON.stringify(obj_Return));
     })
