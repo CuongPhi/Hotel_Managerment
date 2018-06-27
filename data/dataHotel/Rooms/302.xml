@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Phong Ma_so="302" Tam_ngung="true" src="http://localhost:3002/img/rooms/302.jpg" Loai_phong="Phòng đơn" Tang="Tầng 3" Gia_thue="150000" Tinh_trang="Trống">
+  <Danh_sach_thue_phong>
+    <Thue_phong So_ngay_thue="2" Gia_thue="200000" Thanh_tien="220000"/>
+  </Danh_sach_thue_phong>
+</Phong>

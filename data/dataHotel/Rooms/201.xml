@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<Phong Ma_so="201" Tam_ngung="false" src="http://localhost:3002/img/rooms/201.jpg" Loai_phong="Phòng gia đình" Tang="Tầng 2" Gia_thue="220000" Tinh_trang="Đã thuê">
+<Phong Ma_so="201" Tam_ngung="false" src="http://localhost:3002/img/rooms/201.jpg" Loai_phong="Phòng gia đình" Tang="Tầng 2" Gia_thue="220000" Tinh_trang="Trống">
   <Danh_sach_thue_phong>
     <Thue_phong So_ngay_thue="2" Gia_thue="200000" Thanh_tien="220000"/>
     <Thue_phong So_ngay_thue="3" Gia_thue="200000" Thanh_tien="210000"/>
     <Thue_phong Ten_KH="Nguyễn Thành Trung" CMND="7941651651" ADDRESS="Lâm Đồng" So_KH="1" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-23"/>
     <Thue_phong Ten_KH="Nguyễn Văn Tuấn" CMND="49191464" ADDRESS="Cần Thơ" So_KH="1" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-23" Ghi_chu="giảm giá 80k" So_Ngay_Thue="4" Don_Gia_Moi="220000" Thanh_Tien="800000"/>
     <Thue_phong Ten_KH="Nguyễn Văn Anh" CMND="43434243535" ADDRESS="Bình Dương" So_KH="1" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-27" Ghi_chu="" So_Ngay_Thue="0" Don_Gia_Moi="220000" Thanh_Tien="0"/>
-    <Thue_phong Ten_KH="Nguyễn Phi Cường" CMND="281157576" ADDRESS="TPHCM" So_KH="2" So_KH_Ngoai="1" Ngay_bat_dau="2018-06-27"/>
+    <Thue_phong Ten_KH="Nguyễn Phi Cường" CMND="281157576" ADDRESS="TPHCM" So_KH="2" So_KH_Ngoai="1" Ngay_bat_dau="2018-06-27" Ghi_chu="" So_Ngay_Thue="1" Don_Gia_Moi="330000" Thanh_Tien="260000"/>
   </Danh_sach_thue_phong>
 </Phong>

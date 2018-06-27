@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Phong Ma_so="205" Tam_ngung="false" src="http://localhost:3002/img/rooms/205.jpg" Loai_phong="Phòng đơn" Tang="Tầng 2" Gia_thue="150000" Tinh_trang="Đã thuê">
+  <Danh_sach_thue_phong>
+    <Thue_phong So_ngay_thue="2" Gia_thue="200000" Thanh_tien="220000"/>
+    <Thue_phong Ten_KH="Trần Hùng Phong" CMND="281545123" ADDRESS="Quận 7" So_KH="1" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-27"/>
+  </Danh_sach_thue_phong>
+</Phong>

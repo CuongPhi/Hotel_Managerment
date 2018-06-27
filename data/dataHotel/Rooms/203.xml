@@ -7,6 +7,7 @@
     <Thue_phong Ten_KH="Thái Tú" CMND="28445445" ADDRESS="Cà Mau" So_KH="3" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-25"/>
     <Thue_phong Ten_KH="Bùi Văn Linh" CMND="789746641" ADDRESS="Nhật Bản" So_KH="2" So_KH_Ngoai="1" Ngay_bat_dau="2018-06-25" Ghi_chu="" So_Ngay_Thue="2" Don_Gia_Moi="225000" Thanh_Tien="440000"/>
     <Thue_phong Ten_KH="Nguyễn Thành Long" CMND="159877446" ADDRESS="Thủ Đức" So_KH="2" So_KH_Ngoai="1" Ngay_bat_dau="2018-06-27" Ghi_chu="" So_Ngay_Thue="0" Don_Gia_Moi="225000" Thanh_Tien="0"/>
-    <Thue_phong Ten_KH="Lê Văn Sang" CMND="298787452" ADDRESS="Long Thành, Đồng Nai" So_KH="2" So_KH_Ngoai="1" Ngay_bat_dau="2018-06-27"/>
+    <Thue_phong Ten_KH="Lê Văn Sang" CMND="298787452" ADDRESS="Long Thành, Đồng Nai" So_KH="2" So_KH_Ngoai="1" Ngay_bat_dau="2018-06-27" Ghi_chu="" So_Ngay_Thue="1" Don_Gia_Moi="225000" Thanh_Tien="195000"/>
+    <Thue_phong Ten_KH="Đinh Văn Chung" CMND="254632147" ADDRESS="Thái Nguyên" So_KH="2" So_KH_Ngoai="0" Ngay_bat_dau="2018-06-27"/>
   </Danh_sach_thue_phong>
 </Phong>

@@ -50,10 +50,10 @@ choThuePhong=()=>{
     var idRoom = $('select[name=cbbRooms]').val() + "";
     var dateIn = $('#dateIn').val()+"";
   
-    if(CMNDCus ==""){
+    if(!isIDNumber(CMNDCus)){
         $('#lbErr').text('Hãy nhập CMND chính xác');
         $('i').show();
-        console.log('CMND lỗi');
+        console.log(CMNDCus);
         return;
     }
     dataCookie = JSON.stringify({
@@ -82,6 +82,15 @@ choThuePhong=()=>{
 
           }
     })
+}
+isIDNumber=(idNumber)=>{
+    if (idNumber.length != 9 || !isNumeric(idNumber)) {
+        return false
+    }
+    return true;
+}
+function isNumeric(value) {
+    return /^-{0,1}\d+$/.test(value);
 }
 
 clearAll=()=>{
