@@ -1,4 +1,29 @@
 
+  checkAuth=()=>{
+    var cookie = document.cookie;
+    dataCookie = JSON.stringify({
+        'id': `${cookie}`})
+        $.ajax({
+            assign:false,
+            type: "POST",
+            dataType: '',
+            data : dataCookie,
+            url: 'http://localhost:3001/nhanVien',
+            statusCode: {
+                404: function() {
+                    window.location.assign('http://localhost:3002/login.html')
+                },
+                200: function(){
+                    if(window.location.href != 'http://localhost:3002/staff.html')
+                        window.location.assign('http://localhost:3002/staff.html')
+                }
+    
+              }
+        })
+
+}
+
+checkAuth();
 danh_sach_ten_phong_trong = function() {
 var  Phongs=[];  
   $.ajax({
@@ -22,7 +47,6 @@ var  Phongs=[];
 };
 
 loadCbbRooms=()=>{
-    checkAuth();
 
     var cbb =document.getElementById('cbbRooms');
     var phongs= danh_sach_ten_phong_trong();
@@ -122,27 +146,3 @@ dangXuat=()=>{
     })  
   
   }
-
-  checkAuth=()=>{
-    var cookie = document.cookie;
-    dataCookie = JSON.stringify({
-        'id': `${cookie}`})
-        $.ajax({
-            assign:false,
-            type: "POST",
-            dataType: '',
-            data : dataCookie,
-            url: 'http://localhost:3001/nhanVien',
-            statusCode: {
-                404: function() {
-                    window.location.assign('http://localhost:3002/login.html')
-                },
-                200: function(){
-                    if(window.location.href != 'http://localhost:3002/staff.html')
-                        window.location.assign('http://localhost:3002/staff.html')
-                }
-    
-              }
-        })
-
-}

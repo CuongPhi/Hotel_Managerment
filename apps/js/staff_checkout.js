@@ -1,6 +1,30 @@
 var total= 0;
 var idR_sl = -1;
 var obj_sl;
+checkAuth=()=>{
+    var cookie = document.cookie;
+    dataCookie = JSON.stringify({
+        'id': `${cookie}`})
+        $.ajax({
+            assign:false,
+            type: "POST",
+            dataType: '',
+            data : dataCookie,
+            url: 'http://localhost:3001/nhanVien',
+            statusCode: {
+                404: function() {
+                    window.location.assign('http://localhost:3002/login.html')
+                },
+                200: function(){
+                    if(window.location.href != 'http://localhost:3002/staff_checkout.html')
+                        window.location.assign('http://localhost:3002/staff_checkout.html')
+                }
+    
+              }
+        })
+
+}
+checkAuth();
 danh_sach_phong_thue = function() {
     var  Phongs=[];  
       $.ajax({
@@ -23,7 +47,7 @@ danh_sach_phong_thue = function() {
     }
 
 loadCbbRooms=()=>{
-    checkAuth();
+   
 
         var cbb =document.getElementById('cbbRooms');
         var phongs= danh_sach_phong_thue();
@@ -191,26 +215,4 @@ dangXuat=()=>{
     })  
   }
 
-  checkAuth=()=>{
-    var cookie = document.cookie;
-    dataCookie = JSON.stringify({
-        'id': `${cookie}`})
-        $.ajax({
-            assign:false,
-            type: "POST",
-            dataType: '',
-            data : dataCookie,
-            url: 'http://localhost:3001/nhanVien',
-            statusCode: {
-                404: function() {
-                    window.location.assign('http://localhost:3002/login.html')
-                },
-                200: function(){
-                    if(window.location.href != 'http://localhost:3002/staff_checkout.html')
-                        window.location.assign('http://localhost:3002/staff_checkout.html')
-                }
-    
-              }
-        })
-
-}
+  
